@@ -1,0 +1,958 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "có ai ở đây không",
+                "Hello",
+                "alo",
+                "Chào",
+                "chào bạn",
+                "Xin chào",
+                "Tôi muốn hỏi"
+            ],
+            "responses": [
+                "Xin chào, bạn cần gì?",
+                "Xin chào, tôi có thể giúp gì cho bạn?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "Thanks",
+                "Goodbye",
+                "Cảm ơn",
+                "tạm biệt",
+                "ok"
+            ],
+            "responses": [
+                "Hẹn gặp bạn ở rạp của chúng tôi nhé!",
+                "Chúc một ngày tốt lành!",
+                "Bye! Hẹn gặp bạn ở rạp.",
+                "Rất vui vì đã giúp được bạn. Mong sớm gặp bạn ở rạp của chúng tôi!"
+            ]
+        },
+        {
+            "tag": "rule_food",
+            "patterns": [
+                "mang đồ ăn và nước uống vào rạp chiếu phim được không",
+                "mang đồ ăn và nước uống vào rạp được không",
+                "Tôi có thể mang đồ ăn và nước uống vào rạp chiếu phim không",
+                "Tôi có thể mang đồ ăn và nước uống vào rạp không",
+                "Tôi có thể mang theo đồ ăn và nước uống vào rạp chiếu phim được không",
+                "Tôi có thể mang theo đồ ăn và nước uống vào rạp được không",
+                "mang theo đồ ăn và nước uống vào rạp chiếu phim được không",
+                "mang theo đồ ăn và nước uống vào rạp được không",
+                "Tôi có thể mang theo đồ ăn và nước uống vào phòng chiếu phim được không",
+                "Tôi có thể mang theo đồ ăn và nước uống vào phòng chiếu không",
+                "mang theo đồ ăn và nước uống vào phòng chiếu phim được không",
+                "Tôi có thể mang đồ ăn và nước uống vào phòng chiếu phim được không",
+                "mang đồ ăn và nước uống vào phòng chiếu phim được không",
+                "Tôi có thể mang theo đồ ăn và nước uống vào phòng chiếu được không",
+                "mang theo đồ ăn và nước uống vào phòng chiếu được không",
+                "Tôi có thể mang đồ ăn và nước uống vào phòng chiếu được không",
+                "mang đồ ăn và nước uống vào phòng chiếu được không",
+                "Tôi có thể mang nước uống vào rạp chiếu phim không",
+                "mang nước uống vào rạp chiếu phim được không",
+                "mang đồ ăn vào rạp được không",
+                "mang đồ ăn vào rạp chiếu phim được không",
+                "mang đồ ăn vào phòng chiếu được không",
+                "Tôi có thể mang thức ăn và đồ uống từ nhà vào trong rạp chiếu phim được không",
+                "mang thức ăn và đồ uống từ nhà vào trong rạp chiếu phim được không",
+                "Tôi có thể tự mang đồ ăn uống vào rạp không",
+                "có thể tự mang đồ ăn uống vào rạp không",
+                "Tôi có thể mang đồ ăn uống vào rạp không",
+                "Có đồ ăn và thức uống nào không được mang vào rạp không",
+                "Tôi có thể mang thức ăn hoặc đồ uống từ bên ngoài vào rạp để tiêu thụ trong phòng chiếu không",
+                "Tôi có thể mang thức ăn hoặc đồ uống từ bên ngoài vào rạp để sử dụng trong phòng chiếu không",
+                "mang theo thức ăn và nước uống từ bên ngoài vào phòng chiếu được không",
+                "mang theo thức ăn và nước uống từ ngoài vào phòng chiếu được không",
+                "tôi có thể mang theo thức ăn và nước uống từ bên ngoài vào phòng chiếu được không",
+                "rạp có quy định gì về việc mang thức ăn, nước uống vào trong rạp",
+                "rạp có quy định gì về việc mang đồ ăn, nước uống vào trong rạp",
+                "Tôi có thể mang theo đồ ăn nhẹ vào trong phòng chiếu được không",
+                "Tôi có thể mang đồ ăn nhẹ vào trong phòng chiếu được không",
+                "Tôi có thể mang đồ ăn nhẹ vào trong rạp được không",
+                "Tôi có thể mang đồ ăn nhẹ vào trong rạp chiếu phim được không",
+                "Rạp có cho phép khách hàng đem thức ăn và đồ uống từ bên ngoài vào phòng chiếu không",
+                "Rạp có cho phép khách hàng đem thức ăn và đồ uống ở ngoài vào phòng chiếu không",
+                "Rạp có cho phép khách hàng mang theo thức ăn và đồ uống từ bên ngoài vào phòng chiếu không",
+                "Rạp có cho phép khách hàng mang theo thức ăn và đồ uống ở ngoài vào phòng chiếu không",
+                "Tôi có thể đưa thức ăn và đồ uống của tôi vào phòng chiếu phim không",
+                "tôi có thể mang theo thức ăn và nước uống từ ngoài vào phòng chiếu được không",
+                "Tôi có thể đưa thức ăn và đồ uống vào phòng chiếu phim không",
+                "Tôi có thể mang theo thức ăn, đồ uống từ nhà để sử dụng trong phòng chiếu không",
+                "Thức ăn và đồ uống có được phép mang vào phòng chiếu không",
+                "Có hạn chế mang đồ ăn vào rạp không",
+                "Tôi có thể mang đồ ăn vào rạp chiếu phim không",
+                "Tôi có thể mang theo đồ ăn nhẹ từ nhà vào rạp không",
+                "Có cho phép đem đồ ăn từ bên ngoài vào trong rạp không",
+                "Tôi có thể mang đồ ăn, thức uống vào rạp chiếu phim không",
+                "Tôi có thể mang thức ăn và đồ uống từ nhà vào trong rạp chiếu phim được không",
+                "Có đồ ăn và thức uống nào không được mang vào rạp",
+                "Tôi có thể tự mang đồ ăn uống vào rạp không",
+                "Tôi có thể mang nước uống vào rạp chiếu phim không"
+            ],
+            "responses": [
+                "Việc bạn mang theo đồ ăn hay đồ uống từ bên ngoài vào phòng chiếu phim là không thể, bạn có thể dùng các loại đồ ăn được bán tại quầy phục vụ của rạp chúng tôi.",
+                "Theo quy định của rạp phim thì bạn không thể mang theo thức ăn hay đồ uống từ bên ngoài vào trong rạp được, bạn có thể mua các combo đồ ăn & nước uống tại quầy phục vụ!",
+                "Xin lỗi những bạn không thể mang đồ ăn, thức uống từ bên ngoài vào trong rạp chiếu phim, bạn có thể tham khảo các combo đồ ăn & nước uống ngay tại quầy phục vụ của chúng tôi. Xin cảm ơn!",
+                "Theo quy định của rạp chiếu phim thì bạn không thể mang thức ăn hoặc đồ uống từ bên ngoài vào phòng chiếu, bạn có thể mua đồ ăn và thức uống được phép dùng trong phòng chiếu phim tại quầy phục vụ của chúng tôi. Xin cảm ơn!"
+            ]
+        },
+        {
+            "tag": "rule_device",
+            "patterns": [
+                "Rạp có cho phép quay phim, chụp ảnh hoặc sử dụng điện thoại trong phòng chiếu không",
+                "Tôi có thể mang máy ảnh hoặc quay phim trong phòng chiếu không",
+                "Rạp có cho phép chụp ảnh và quay phim trong phòng chiếu không",
+                "Tôi có thể mang theo túi xách vào rạp không",
+                "Tôi có thể mang theo túi xách hoặc ba lô khi đến xem phim không",
+                "Tôi có thể mang máy ảnh hoặc máy quay video vào rạp để quay phim không",
+                "Rạp có cho phép quay, chụp ảnh trong suốt buổi chiếu không"
+            ],
+            "responses": [
+                "Bạn có thể đem theo đồ đạc của mình vào rạp nhưng trong lúc xem phim, chúng tôi mong rằng bạn sẽ không quay hoặc chụp ảnh nội dung phim của chúng tôi và vui lòng chuyển điện thoại sang chế độ rung để không làm gián đoạn, ảnh hưởng đến những người xung quanh nhé, cảm ơn bạn rất nhiều vì đã hỗ trợ chúng tôi!",
+                "Bạn được phép đem theo đồ dùng cá nhân của mình như túi xách, ba lô, điện thoại, máy ảnh,... nhưng bạn vui lòng không quay phim hay chụp ảnh để ghi lại nội dung phim của chúng tôi và vui lòng đặt điện thoại ở chế độ rung hoặc tắt nguồn (nếu có thể) để không làm ảnh hưởng đến những người xung quanh nhé! Xin cảm ơn!"
+            ]
+        },
+        {
+            "tag": "rule_use_phone",
+            "patterns": [
+                "tôi có cần tắt điện thoại hoặc đổi chế độ rung trong phòng chiếu không",
+                "tôi có phải cần tắt điện thoại hoặc đổi chế độ rung trong phòng chiếu không",
+                "Có phải tắt điện thoại khi xem phim không",
+                "Có được phép sử dụng điện thoại trong phòng chiếu không",
+                "Có phải tắt điện thoại và các thiết bị di động khi xem phim không",
+                "Rạp có cho phép dùng điện thoại di động trong phòng chiếu không",
+                "Có thể mang điện thoại vào trong phòng chiếu phim không"
+            ],
+            "responses": [
+                "Bạn có thể mang theo điện thoại của mình vào phòng chiếu và sử dụng, tuy nhiên chúng tôi mong rằng bạn sẽ không làm ảnh hướng đến những người xung quanh và nếu có thể bạn hãy chuyển điện thoại của mình sang chế độ rung nhé!",
+                "Bạn được phép mang theo điện thoại của mình vào trong phòng chiếu, tuy nhiên trong lúc sử dụng chúng tôi mong bạn sẽ không làm ảnh hướng đến những người xung quanh nhé! Bạn có thể chuyển sang chế độ rung & giảm độ sáng màn hình điện thoại của mình. Thanks you!"
+            ]
+        },
+        {
+            "tag": "general_rule",
+            "patterns": [
+                "Có những yêu cầu đặc biệt nào tôi cần biết khi đến xem phim tại rạp chiếu phim",
+                "Phải tuân thủ những quy tắc gì khi xem phim",
+                "Phải tuân thủ những quy tắc nào khi xem phim",
+                "quy định chung của phòng chiếu là gì",
+                "cho tôi biết quy định của phòng chiếu",
+                "cho tôi biết quy định của rạp chiếu",
+                "quy định của rạp chiếu phim là gì",
+                "quy định của phòng chiếu là gì",
+                "cho tôi biết những quy tắc cần tuân thủ trong lúc xem phim",
+                "cho tôi biết những quy tắc trong lúc xem phim",
+                "cho tôi biết những quy tắc cần tuân thủ khi xem phim",
+                "cho tôi biết những quy tắc khi xem phim",
+                "quy tắc của phòng chiếu là gì",
+                "quy định của rạp chiếu là gì",
+                "quy tắc của rạp chiếu là gì",
+                "quy định của phòng chiếu là gì"
+            ],
+            "responses": [
+                "Những quy định của rạp chiếu phim: <br/>- Không vào muộn quá 20 phút.<br/>- Không quay phim, chụp ảnh trong phòng chiếu.<br/>- Tắt chuông điện thoại, không sử dụng điện thoại khi xem phim.<br/>- Không hút thuốc.<br/>- Không gây ảnh hưởng đến khán giả xung quanh.<br/>- Không ăn kẹo cao su.<br/>- Không mang thú nuôi.<br/>- Bảo quản tài sản cá nhân cẩn thận."
+            ]
+        },
+        {
+            "tag": "movie_duration",
+            "patterns": [
+                "Làm thế nào để biết thời lượng của phim",
+                "xem thời lượng của phim ở đâu"
+            ],
+            "responses": [
+                "Bạn có thể xem thời lượng của phim ở ngay trong chi tiết phim hoặc ngay trên bên dưới bộ phim trên website này sẽ có để thời lượng của phim!"
+            ]
+        },
+        {
+            "tag": "identity",
+            "patterns": [
+                "tôi có cần giấy tờ để vào phòng chiếu không",
+                "Nếu tôi quên giấy tờ tùy thân thì có được vào xem phim không",
+                "Có cần mang theo giấy tờ tùy thân khi đến rạp chiếu phim để xác nhận mua vé không",
+                "Tôi cần mang theo giấy tờ gì khi vào xem phim"
+            ],
+            "responses": [
+                "Khi vào xem phim bạn không cần phải xuất trình giấy tờ tuỳ thân để được vào xem, bạn chỉ cần cho nhân viên xác nhận vé xem phim của bạn và nhân viên sẽ hướng dẫn bạn di chuyển vào phòng chiếu phim bạn đã chọn."
+            ]
+        },
+        {
+            "tag": "trailer",
+            "patterns": [
+                "tôi có thể xem trailer phim ở đâu",
+                "Tôi có thể xem trước trailer của phim trên trang web của rạp không",
+                "Tôi có thể xem trailer phim trên website của rạp không",
+                "Tôi có thể xem trước trailer của phim không"
+            ],
+            "responses": [
+                "Bạn có thể xem trước Trailer của phim ở trong phần chi tiết phim trên Website của chúng tôi.",
+                "Bạn có thể xem Trailer phim trong phần chi tiết phim.",
+                "Bạn có thể xem Trailer của phim trong phần chi tiết phim trên Website của chúng tôi."
+            ]
+        },
+        {
+            "tag": "buy_ticket_way",
+            "patterns": [
+                "mua vé online hay mua trực tiếp tại quầy vé",
+                "cách đặt vé trực tiếp tại rạp hoặc qua điện thoại",
+                "có thể mua vé ở đâu",
+                "có thể mua vé xem phim ở đâu",
+                "Tôi có thể mua vé ở đâu",
+                "Làm thế nào để đặt vé xem phim"
+            ],
+            "responses": [
+                "Bạn có thể đặt vé online hoặc đặt tại quầy vé của rạp.<br/>Để đặt vé online thì bạn có thể tìm kiếm phim mà bạn muốn xem, sau đó bấm nút mua và tiến hành chọn ghế còn trống rồi xác nhận thanh toán! Sau khi thanh toán xong vé của bạn sẽ lưu ở lịch sử đặt vé, và bạn vui lòng đưa nó cho nhân viên tại quầy vé để nhận vé vào phòng chiếu.<br/>Bạn cũng có thể mua vé & thanh toán trực tiếp tại quầy vé của chúng tôi."
+            ]
+        },
+        {
+            "tag": "buy_ticket_off",
+            "patterns": [
+                "Tôi có thể mua vé tại quầy thu ngân hay máy bán vé tự động của rạp không",
+                "Tôi có thể mua vé xem phim tại quầy thông tin không",
+                "Tôi có thể mua vé trực tiếp tại rạp được không",
+                "Tôi có thể mua vé trực tiếp tại rạp không"
+            ],
+            "responses": [
+                "Tất nhiên, bạn có thể mua vé & thanh toán trực tiếp tại quầy vé của chúng tôi. Ngoài ra bạn cũng có thể đặt vé online thông qua website của chúng tôi!"
+            ]
+        },
+        {
+            "tag": "buy_ticket_online",
+            "patterns": [
+                "Có thể mua vé trực tuyến không",
+                "Có thể mua vé online không",
+                "Tôi có thể mua vé trực tuyến không",
+                "Tôi có thể mua vé online không",
+                "Mua vé online như thế nào",
+                "Mua vé trực tuyến như thế nào",
+                "cách đặt vé online",
+                "cách đặt vé trực tuyến"
+            ],
+            "responses": [
+                "Để đặt vé online thì bạn có thể truy cập vào website rạp chúng tôi để tìm kiếm phim mà bạn muốn xem, sau đó bấm nút mua và tiến hành chọn ghế còn trống rồi xác nhận thanh toán! Sau khi thanh toán xong vé của bạn sẽ lưu ở lịch sử đặt vé, và bạn vui lòng đưa nó cho nhân viên tại quầy vé để nhận vé vào phòng chiếu."
+            ]
+        },
+        {
+            "tag": "ticket_exchange_refund",
+            "patterns": [
+                "tôi có thể đổi vé hoặc hoàn tiền không",
+                "có thể đổi vé hoặc hoàn tiền không",
+                "có thể cho tôi biết thông tin về chính sách hoàn tiền và đổi vé của rạp không",
+                "cho tôi biết thông tin về chính sách hoàn tiền và đổi vé của rạp",
+                "thông tin về chính sách hoàn tiền và đổi vé của rạp",
+                "cách đổi lịch chiếu hoặc huỷ vé trên các ứng dụng hoặc trang web của rạp",
+                "cách đổi lịch chiếu hoặc huỷ vé của rạp",
+                "cách đổi lịch chiếu hoặc huỷ vé mua trước",
+                "cho tôi biết cách đổi lịch chiếu hoặc huỷ vé mua trước",
+                "cách đổi suất chiếu hoặc phòng chiếu khác",
+                "tôi có thể đổi hoặc hủy vé đã mua không",
+                "cách đổi hoặc hủy vé đã mua",
+                "Quy định đổi vé như thế nào",
+                "Tôi có thể đổi hoặc hoàn lại vé nếu không thể xem phim được không",
+                "có thể đổi hoặc hoàn lại vé nếu không thể xem phim được không",
+                "Rạp có thể đổi vé sang một suất chiếu khác không",
+                "có thể đổi vé sang một suất chiếu khác không",
+                "Tôi có thể hủy vé đã mua trước đó được không",
+                "có thể hủy vé đã mua trước đó được không",
+                "Tôi có thể đổi vé đã mua sang suất chiếu khác được không",
+                "có thể đổi vé đã mua sang suất chiếu khác được không",
+                "đổi vé đã mua sang suất chiếu khác được không",
+                "Tôi có thể hủy vé đã đặt trước được không",
+                "hủy vé đã đặt trước được không",
+                "có thể hủy vé đã đặt trước được không",
+                "Tôi có thể đổi vé đã mua sang suất chiếu khác không",
+                "có thể đổi vé đã mua sang suất chiếu khác không",
+                "Tôi có thể đổi vé đã mua không",
+                "có thể đổi vé đã mua không",
+                "có thể hoàn tiền vé đã mua không",
+                "Tôi có thể hoàn tiền vé đã mua không",
+                "Có thể đổi ngày và giờ xem phim không",
+                "tôi có thể đổi ngày và giờ xem phim không",
+                "Tôi có thể hủy bỏ vé đã đặt trực tuyến không",
+                "có thể hủy bỏ vé đã đặt trực tuyến không",
+                "Nếu tôi muốn đổi giờ xem phim, tôi có thể làm điều đó được không",
+                "Tôi có thể hủy vé đã mua trực tuyến không",
+                "có thể hủy vé đã mua trực tuyến không",
+                "Tôi có thể đổi vé xem phim sang ngày khác không",
+                "có thể đổi vé xem phim sang ngày khác không",
+                "đổi vé xem phim sang ngày khác được không",
+                "Tôi có thể hủy vé xem phim của mình không",
+                "Tôi có thể đổi ngày hoặc giờ chiếu phim được không",
+                "có thể đổi ngày hoặc giờ chiếu phim được không",
+                "có thể hoàn tiền vé xem phim không",
+                "có thể đổi suất chiếu nếu không thích lịch chiếu ban đầu không",
+                "tôi có thể đổi suất chiếu nếu không thích lịch chiếu ban đầu không",
+                "Tôi có thể hủy vé được không",
+                "có thể hủy vé được không",
+                "Tôi có thể đổi vé thành suất chiếu khác được không",
+                "có thể đổi vé thành suất chiếu khác được không",
+                "Có thể trả vé lại không",
+                "tôi có thể trả vé lại không",
+                "tôi muốn trả lại vé được không",
+                "Tôi có thể đổi vé hay hoàn tiền không",
+                "Tôi có thể thay đổi hoặc hủy vé mua trước được không?",
+                "Tôi có thể đổi suất chiếu nếu tôi đã mua vé và không thể xem được suất chiếu đó"
+            ],
+            "responses": [
+                "Xin lỗi nhưng rạp chiếu phim của chúng tôi không hỗ trợ bạn đổi/trả/huỷ vé đã mua hoặc thay đổi suất chiếu nên không thể hoàn tiền nếu bạn muốn trả/huỷ vé. Vì vậy nên hãy xem kỹ thời gian cũng như bộ phim mà bạn muốn xem để có thể lựa chọn khung giờ thích hợp nhất nhé!",
+                "Xin lỗi nhưng chúng tôi không thể hỗ trợ nếu bạn có yêu cầu hoàn tiền, đổi vé hay bất cứ điều gì thay đổi liên quan đến thông tin trên vé mà bạn đã đặt. Vì vậy bạn hãy xem lại thông tin lịch phim, giờ giấc, địa điểm, số ghế,... trước khi xác nhận mua vé và thanh toán nhé!"
+            ]
+        },
+        {
+            "tag": "food_drink",
+            "patterns": [
+                "Rạp có phục vụ thức ăn và đồ uống trong phòng chiếu",
+                "Rạp có cung cấp các dịch vụ bán hàng như đồ ăn, nước uống không",
+                "Rạp có bán đồ ăn hay thức uống trong phòng chiếu không",
+                "Tôi có thể mua combo ăn uống ở đâu",
+                "Rạp có phục vụ bánh kẹo và đồ uống không",
+                "Rạp có những gói combo đồ ăn và đồ uống không",
+                "Có thực phẩm và thức uống nào được bán tại rạp",
+                "Có bán thức ăn và đồ uống cho trẻ em tại rạp không",
+                "Có bán combo đồ ăn và đồ uống tại rạp không",
+                "Có bán thức ăn và đồ uống dành cho người lớn tuổi không",
+                "Tôi có thể mua đồ ăn và thức uống trong phòng chiếu không",
+                "Có thức ăn và đồ uống nào được phục vụ tại rạp không",
+                "Có thức ăn và đồ uống nào được phục vụ tại rạp",
+                "Tôi có thể mua đồ ăn và đồ uống ở đâu trong rạp chiếu phim",
+                "Rạp có phục vụ món ăn và đồ uống đặc biệt không",
+                "Rạp chiếu phim có đồ ăn thức uống hay không",
+                "tôi có thể mua thức ăn và đồ uống ở đâu trong rạp",
+                "có thể mua thức ăn và đồ uống ở đâu trong rạp",
+                "Có những loại thức ăn và đồ uống nào được bán tại rạp chiếu phim",
+                "Có những gói combo nào cho khách hàng khi mua vé và đồ ăn uống tại rạp chiếu phim",
+                "Rạp có cung cấp combo đồ ăn, nước uống không",
+                "Rạp có phục vụ thức ăn và nước uống trong suốt bộ phim không",
+                "Rạp chiếu phim có cung cấp đồ ăn và nước uống không",
+                "Thức ăn và đồ uống có bán tại rạp chiếu phim không? Loại nào",
+                "Tôi có thể mua thức ăn, thức uống tại rạp chiếu phim không",
+                "Có bán đồ ăn và thức uống trong rạp không",
+                "Rạp chiếu phim có cung cấp nước uống hay không",
+                "Rạp có cung cấp thức ăn, đồ uống trong suốt buổi chiếu phim không",
+                "Rạp có cung cấp thức ăn, nước uống trong phòng chiếu không",
+                "Tôi có thể mua thức ăn, nước uống trong rạp trước khi vào xem phim không",
+                "Có thực phẩm và đồ uống nào được bán tại rạp không",
+                "có thể mua thức ăn và đồ uống trước khi vào phòng chiếu không",
+                "Tôi có thể mua combo đồ ăn thức uống tại rạp chiếu phim không",
+                "Tôi có thể mua đồ ăn uống và thức uống gì ở rạp",
+                "tôi có thể mua thức ăn và đồ uống ở đâu trong rạp"
+            ],
+            "responses": [
+                "Rạp chúng tôi có khu vực quầy để phục vụ các đồ ăn nhẹ, combo bắp nước,... để quý khách có thể dùng trong lúc xem phim. Vui lòng đến quầy để mua và được hỗ trợ!",
+                "Bạn có thể mua đồ ăn & nước uống tại quầy phục vụ trong rạp chiếu phim của chúng tôi."
+            ]
+        },
+        {
+            "tag": "exchange_seat",
+            "patterns": [
+                "có thể đổi ghế nếu không hài lòng với ghế đã chọn không",
+                "tôi có thể đổi ghế nếu không hài lòng với ghế đã chọn không",
+                "đổi phòng chiếu hoặc yêu cầu đổi ghế ngồi được không",
+                "tôi có thể đổi phòng chiếu hoặc yêu cầu đổi ghế ngồi không",
+                "có thể đổi phòng chiếu hoặc yêu cầu đổi ghế ngồi không",
+                "Tôi có thể đổi chỗ ngồi trên vé đã mua được không",
+                "có thể đổi chỗ ngồi trên vé đã mua được không",
+                "Có thể đổi chỗ ngồi nếu không hài lòng không",
+                "tôi Có thể đổi chỗ ngồi nếu không hài lòng không",
+                "Tôi có thể yêu cầu nhân viên rạp đổi chỗ ngồi của mình không",
+                "Tôi có thể yêu cầu nhân viên rạp đổi chỗ ngồi của mình nếu không hài lòng không",
+                "có thể yêu cầu nhân viên rạp đổi chỗ ngồi của mình nếu không hài lòng không",
+                "có thể yêu cầu nhân viên rạp đổi chỗ ngồi của mình không",
+                "tôi có thể đổi chỗ ngồi không",
+                "Chỗ ngồi có thể được đổi thành chỗ ngồi khác được không",
+                "Nếu không thích ghế ngồi được chọn, có thể đổi ghế khác không",
+                "Tôi có thể đổi ghế khi đã mua vé không",
+                "Tôi có thể đổi chỗ ngồi nếu không hài lòng với chỗ ngồi của mình không",
+                "Tôi có thể yêu cầu đổi chỗ ngồi sau khi đã mua vé không",
+                "Tôi có thể đổi chỗ ngồi nếu chỗ ngồi của tôi không hài lòng không"
+            ],
+            "responses": [
+                "Rất tiếc nhưng bạn không thể đổi số ghế/chỗ ngồi của mình sau khi bạn đã xác nhận đặt vé!",
+                "Xin lỗi nhưng bạn không thể yêu cầu đổi chỗ ngồi sau khi đã đặt vé!",
+                "Xin lỗi nhưng theo quy định thì bạn không thể đổi chỗ ngồi của mình sau khi đã đặt vé!"
+            ]
+        },
+        {
+            "tag": "help",
+            "patterns": [
+                "tôi có thể yêu cầu nhân viên của rạp giúp đỡ nếu gặp vấn đề không",
+                "có thể yêu cầu nhân viên của rạp giúp đỡ nếu gặp vấn đề?",
+                "yêu cầu hỗ trợ nếu bị mất đồ trong phòng chiếu",
+                "tôi có thể yêu cầu hỗ trợ nếu bị mất đồ trong phòng chiếu",
+                "tôi có thể yêu cầu hỗ trợ kỹ thuật nếu gặp sự cố về âm thanh hoặc hình ảnh trong phòng chiếu",
+                "có thể yêu cầu hỗ trợ kỹ thuật nếu gặp sự cố về âm thanh hoặc hình ảnh trong phòng chiếu không",
+                "có thể yêu cầu hỗ trợ nếu có vấn đề về vé và thanh toán không",
+                "tôi có thể yêu cầu hỗ trợ nếu có vấn đề về vé và thanh toán không",
+                "tôi có thể yêu cầu hỗ trợ nếu gặp sự cố về chất lượng phim hoặc âm thanh không",
+                "tôi có thể yêu cầu hỗ trợ nếu gặp sự cố về vé, giá vé hoặc chất lượng dịch vụ không",
+                "có thể yêu cầu hỗ trợ nếu gặp sự cố về vé, giá vé hoặc chất lượng dịch vụ không",
+                "tôi muốn yêu cầu hỗ trợ nếu gặp sự cố về truyền thông và cập nhật thông tin của rạp được không",
+                "có thể yêu cầu hỗ trợ nếu gặp sự cố về truyền thông và cập nhật thông tin của rạp không",
+                "có thể yêu cầu hỗ trợ nếu gặp sự cố về độ tuổi của khán giả hoặc nội dung phim không phù hợp không",
+                " yêu cầu hỗ trợ nếu gặp sự cố về độ tuổi của khán giả hoặc nội dung phim không phù hợp được không",
+                "Nếu tôi quên đồ trong phòng chiếu, tôi phải làm gì để lấy lại đồ của mình",
+                "tôi phải làm gì khi tôi quên đồ trong phòng chiếu",
+                "Tôi phải làm gì nếu gặp sự cố với máy chiếu hoặc âm thanh trong phòng chiếu",
+                "tôi phải làm gì nếu tôi quên đồ trong phòng chiếu",
+                "Tôi có thể hỏi nhân viên rạp để được hướng dẫn về chỗ ngồi của mình không",
+                "Có hỗ trợ giải quyết thắc mắc khi xem phim không",
+                "rạp Có hỗ trợ giải quyết thắc mắc khi xem phim không",
+                "Phải làm gì nếu bị quên đồ trong rạp chiếu phim",
+                "Có cách nào liên hệ được với rạp chiếu phim nếu có vấn đề xảy ra",
+                "Điều gì xảy ra nếu máy chiếu phim bị hỏng giữa chừng"
+            ],
+            "responses": [
+                "Nếu bạn gặp phải bất cứ vấn dề gì cần giúp đỡ vui lòng liên hệ với nhân viên gần nhất trong rạp để được hỗ trợ kịp thời!",
+                "Bạn có thể liên hệ với nhân viên gần nhất tại rạp để có thể giúp giải quyết vấn đề của bạn.",
+                "Chúng tôi có đội ngũ nhân viên luôn sẵn sàng nên bạn có thể liên hệ sự trợ giúp từ họ nếu gặp phải bất cứ vấn đề nào cần hỗ trợ!"
+            ]
+        },
+        {
+            "tag": "pay_at_theater",
+            "patterns": [
+                "có thể mua vé tại quầy thu ngân và thanh toán bằng tiền mặt không",
+                "Tôi có thể mua vé tại quầy thu ngân và thanh toán bằng tiền mặt không",
+                "Tôi có thể thanh toán bằng thẻ tín dụng tại rạp không",
+                "Thanh toán bằng thẻ tín dụng tại rạp được không",
+                "có thể thanh toán bằng thẻ tín dụng tại rạp không",
+                "Tôi có thể mua vé tại quầy thu ngân và thanh toán bằng thẻ tín dụng không",
+                "có thể mua vé tại quầy thu ngân và thanh toán bằng thẻ tín dụng không",
+                "Tôi có thể thanh toán bằng tiền mặt hoặc thẻ tín dụng khi mua vé tại quầy thu ngân không",
+                "Thanh toán bằng tiền mặt hoặc thẻ tín dụng khi mua vé tại quầy thu ngân được không",
+                "Tôi có thể mua vé trực tuyến và lấy vé tại quầy thu ngân khi đến rạp không",
+                "có thể mua vé trực tuyến và lấy vé tại quầy thu ngân khi đến rạp không",
+                "Tôi có thể mua vé tại quầy thu ngân và thanh toán bằng tiền mặt và thẻ tín dụng cùng lúc không",
+                "Tôi có thể thanh toán bằng thẻ ATM khi mua vé tại quầy thu ngân không",
+                "Có thể sử dụng thẻ tín dụng để thanh toán tại rạp không",
+                "sử dụng thẻ tín dụng để thanh toán tại rạp được không",
+                "sử dụng thẻ ATM để thanh toán tại rạp được không",
+                "Tôi có thể mua vé xem phim bằng tiền mặt hay chỉ có thể dùng thẻ không",
+                "tôi có thể sử dụng thẻ tín dụng để mua vé không",
+                "Có những phương thức thanh toán nào được chấp nhận tại rạp",
+                "Có thể mua vé bằng thẻ tín dụng không",
+                "Tôi có thể sử dụng thẻ tín dụng để thanh toán tại rạp không",
+                "tôi có thể trả tiền vé bằng thẻ không",
+                "Có thể trả tiền vé bằng tiền mặt không",
+                "Rạp chiếu phim có cho phép dùng thẻ tín dụng để thanh toán không",
+                "phương thức thanh toán nào để mua vé và mua đồ ăn uống tại rạp",
+                "cách sử dụng các phương thức thanh toán khác nhau như thẻ tín dụng, thẻ ATM, ví điện tử,.. để mua vé",
+                "Có những hình thức thanh toán nào được chấp nhận",
+                "Tôi có thể thanh toán bằng thẻ tín dụng hay không",
+                "Tôi có thể trả tiền vé bằng thẻ tín dụng hay thẻ ATM không",
+                "Có thể sử dụng thẻ tín dụng để mua vé không"
+            ],
+            "responses": [
+                "Bạn có thể thanh toán dưới bất cứ hình thức nào như tiền mặt, thẻ tín dụng, thẻ ATM, ví điện tử,...",
+                "Chúng tôi có hỗ trợ thanh toán dưới các hình thức như tiền mặt, thẻ ATM, thẻ tín dụng, ví điện tử,...",
+                "Bạn có thể thanh toán bằng tiền mặt hoặc thẻ tín dụng, thẻ ATM, ví điện tử,... tại quầy thu ngân của chúng tôi."
+            ]
+        },
+        {
+            "tag": "payment",
+            "patterns": [
+                "Tôi có thể mua vé trực tuyến và thanh toán bằng Ví điện tử không",
+                "Tôi có thể mua vé online và thanh toán bằng Ví điện tử không",
+                "Tôi có thể mua vé trực tuyến bằng thẻ ATM không",
+                "Tôi có thể mua vé online bằng thẻ ATM không",
+                "Tôi có thể chuyển tiền trực tuyến để mua vé không",
+                "Tôi có thể chuyển tiền online để mua vé không",
+                "có thể chuyển tiền trực tuyến để mua vé không",
+                "có thể chuyển tiền online để mua vé không",
+                "Tôi có thể mua vé online bằng tiền mặt không",
+                "Tôi có thể mua vé trực tuyến bằng tiền mặt không",
+                "có thể mua vé trực tuyến bằng tiền mặt không",
+                "có thể mua vé online bằng tiền mặt không",
+                "có thể mua vé trực tuyến bằng thẻ tín dụng được không",
+                "có thể mua vé online bằng thẻ tín dụng được không",
+                "mua vé trực tuyến và thanh toán qua thẻ visa được không",
+                "mua vé online và thanh toán qua thẻ visa được không",
+                "mua vé trực tuyến và thanh toán qua banking được không",
+                "mua vé online và thanh toán qua banking được không",
+                "mua vé trực tuyến và thanh toán qua thẻ ATM được không",
+                "mua vé online và thanh toán qua thẻ ATM được không",
+                "mua vé trực tuyến và thanh toán qua thẻ tín dụng được không",
+                "mua vé online và thanh toán qua thẻ tín dụng được không"
+            ],
+            "responses": [
+                "Khi đặt vé online bạn có thể thanh toán thông qua các hình thức như banking, ví điện tử,... đều được chúng tôi hỗ trợ!",
+                "Chúng tôi có hỗ trợ các phương thức thanh toán như thông qua ví điện tử, banking,... vậy nên bạn có thể dễ dàng thanh toán khi đặt vé online."
+            ]
+        },
+        {
+            "tag": "info_movie_detail",
+            "patterns": [
+                "thông tin về các phim đang chiếu và thời gian chiếu",
+                "tôi muốn xem thông tin về phòng chiếu và đặc điểm của nó trước khi đến rạp",
+                "cách tìm kiếm thông tin về phim trước khi đến rạp",
+                "cách tìm kiếm thông tin về lịch chiếu và giá vé của các rạp chiếu phim khác nhau",
+                "Tôi có thể tìm thấy thông tin về phim và lịch chiếu trên website của rạp không",
+                "Tôi có thể tìm thấy thông tin về phim và lịch chiếu trên ứng dụng di động của rạp không",
+                "Tôi có thể tìm thấy thông tin về phim và lịch chiếu trên trang web của rạp không",
+                "Tôi có thể tìm thấy thông tin phim và lịch chiếu ở đâu",
+                "Có thể tìm thấy thông tin về phim trên website của rạp không",
+                "Tôi có thể tìm thấy thông tin chi tiết về phim trên website của rạp không",
+                "Tôi có thể tìm thấy thông tin về lịch chiếu và suất chiếu trên website của rạp không",
+                "có thể cho tôi xem lịch chiếu phim mới nhất được không",
+                "Tôi có thể đến rạp chiếu phim để xem trước trailer của phim không",
+                "Tôi có thể tìm hiểu về phim trước khi đến xem không",
+                "Tôi có thể hỏi để biết thêm thông tin về phim hay không"
+            ],
+            "responses": [
+                "Bạn có thể xem các thông tin của bộ phim tại phần chi tiết phim!",
+                "Các thông tin mà bạn muốn xem như trailer, giá vé, lịch chiếu,... sẽ nằm trong phần chi tiết phim, vui lòng chọn phim bạn muốn để xem thông tin chi tiết!",
+                "Bạn có thể chọn bộ phim bạn muốn xem để xem chi tiết của nó!"
+            ]
+        },
+        {
+            "tag": "info_theater",
+            "patterns": [
+                "cách tìm hiểu thông tin về rạp chiếu phim trước khi đến để lựa chọn phù hợp",
+                "có thể cho tôi địa chỉ và thông tin liên hệ của rạp chiếu phim không",
+                "cho tôi địa chỉ và thông tin liên hệ của rạp chiếu phim"
+            ],
+            "responses": [
+                "Bạn có thể xem thông tin, địa chỉ của rạp trên website của chúng tôi, vui lòng chọn rạp bạn muốn xem và xem thông tin!"
+            ]
+        },
+        {
+            "tag": "movie_coming_soon",
+            "patterns": [
+                "thông tin về các phim sắp chiếu trong thời gian tới",
+                "cho tôi biết thông tin về các phim sắp chiếu trong thời gian tới",
+                "xem thông tin về các phim sắp chiếu ở đâu",
+                "làm thế nào để biết thông tin các phim sắp chiếu"
+            ],
+            "responses": [
+                "Bạn có thể xem thông tin về các phim sắp chiếu tại phần phim sắp chiếu của website!"
+            ]
+        },
+        {
+            "tag": "movie_now",
+            "patterns": [
+                "Phim đang chiếu là gì",
+                "Có những bộ phim nào đang chiếu tại rạp này",
+                "Có những phim nào đang chiếu tại rạp chiếu phim này",
+                "những phim nào đang chiếu tại rạp",
+                "Làm thế nào để biết rạp chiếu phim đang chiếu phim gì vào ngày hôm nay",
+                "Làm thế nào để xem thông tin về các phim đang chiếu"
+            ],
+            "responses": [
+                "Bạn có thể xem thông tin về các phim đang chiếu tại phần phim đang chiếu của website!"
+            ]
+        },
+        {
+            "tag": "sub_title",
+            "patterns": [
+                "có thể yêu cầu phụ đề hoặc dịch phim không nếu bạn không hiểu ngôn ngữ trong phim không",
+                "Rạp có cung cấp phụ đề cho khách hàng khi xem phim không",
+                "Tôi có thể xem phim bằng ngôn ngữ nước ngoài tại rạp không",
+                "Tôi có thể xem các bộ phim nước ngoài được phụ đề hoặc lồng tiếng không",
+                "Có phim nào được chiếu bằng tiếng Anh không",
+                "Phim này được phát sóng bằng tiếng gì",
+                "Phim này có phụ đề không",
+                "Tôi có thể yêu cầu sử dụng phụ đề không",
+                "Làm thế nào để biết phim sẽ được chiếu bằng ngôn ngữ nào",
+                "có phim nào được phụ đề không",
+                "Rạp có cung cấp phụ đề hoặc lồng tiếng cho phim nước ngoài không",
+                "Phim này có phụ đề tiếng Việt không",
+                "Làm thế nào để biết rạp chiếu phim này có phụ đề tiếng Việt không"
+            ],
+            "responses": [
+                "Các bộ phim được chiếu tại rạp trong phần chi tiết đều có ngôn ngữ của bộ phim, ngoài ra chúng sẽ có phụ đề chẳng hạn như phim tiếng Việt sẽ có phụ đề tiếng Anh, phim nước ngoài sẽ có phụ đề tiếng Việt. Vậy nên bạn có thể yên tâm nếu xem những bộ phim của nước ngoài!",
+                "Các bộ phim sẽ có ngôn ngữ nhất định trong phần chi tiết phim, ngoài ra các bộ phim sẽ có thêm phụ đề để hỗ trợ khách nước ngoài xem phim Việt hoặc người Việt xem các bộ phim nước ngoài"
+            ]
+        },
+        {
+            "tag": "booking_history",
+            "patterns": [
+                "có thể kiểm tra lịch sử đặt vé và mua vé trực tuyến của mình không",
+                "có thể kiểm tra lịch sử đặt vé không",
+                "có thể xem lịch sử đặt vé không"
+            ],
+            "responses": [
+                "Bạn có thể xem lịch sử đặt vé của bản phân trong phần lịch sử đặt vé và dùng nó đối chiếu tại quầy vé để nhận vé xem phim"
+            ]
+        },
+        {
+            "tag": "booking_way",
+            "patterns": [
+                "cách đặt chỗ trước để có thể chọn được ghế mình thích",
+                "cách đặt vé và chọn ghế trên các ứng dụng hoặc trang web của rạp",
+                "cách đặt vé trực tuyến để tránh xếp hàng tại quầy vé",
+                "cách sử dụng ứng dụng để đặt vé và tìm kiếm thông tin về phim trên điện thoại di động",
+                "cách đặt vé cho các suất chiếu đặc biệt như phim chiếu rạp, phim 3D, phim IMAX, phim bom tấn",
+                "cách mua vé xem phim trực tuyến và đổi mã QR để xem phim",
+                "cách mua vé xem phim qua ứng dụng di động của rạp",
+                "cách đặt vé cho các phim đang chiếu và các phim sắp tới của rạp chiếu phim",
+                "cách đặt vé trực tuyến và chọn chỗ ngồi trên website của rạp",
+                "Rạp chiếu phim có chính sách đặt chỗ trước không",
+                "Tôi có thể mua vé trực tuyến trên trang web của rạp chiếu phim không",
+                "Tôi có thể mua vé trước để đảm bảo chỗ ngồi không",
+                "Tôi có thể đặt chỗ trước khi đến rạp không",
+                "Tôi có thể mua vé trực tuyến và chọn chỗ ngồi trên mạng không",
+                "Tôi có thể đặt chỗ trước cho suất chiếu đặc biệt hay suất chiếu sớm được không",
+                "Tôi có thể mua vé trực tuyến thông qua trang web của rạp không",
+                "Tôi có thể mua vé trực tuyến thông qua ứng dụng di động của rạp không",
+                "Tôi có thể mua vé bằng ứng dụng di động không",
+                "Tôi có thể mua vé xem phim trực tuyến trên website của rạp không",
+                "Tôi có thể đặt mua vé xem phim qua điện thoại không",
+                "Có cách nào để đặt vé trước không cần phải đến rạp"
+            ],
+            "responses": [
+                "Bạn có thể tiến hành đặt vé/chọn chỗ online trước khi đến rạp. Vui lòng truy cập website của rạp, chọn phim muốn xem, chọn ghế và xác nhận thanh toán. Khi đó bạn có thể đến quầy thu vé trước giờ xem phim để xác nhận và lấy vé!",
+                "Chúng tôi có hỗ trợ việc đặt vé online để tránh phải chờ đợi mua vé tại rạp hoặc không có chỗ ngồi thích hợp! Vui lòng truy cập vào website của rạp để tiến hành đặt vé!"
+            ]
+        },
+        {
+            "tag": "food_drink_ticket",
+            "patterns": [
+                "cách mua vé và đồ ăn uống trước để tránh xếp hàng tại quầy vé và quầy bán đồ ăn",
+                "Có thể mua vé & đồ ăn tại đâu",
+                "Có thể mua vé & nước uống tại đâu",
+                "Có thể mua vé & nước uống ở đâu"
+            ],
+            "responses": [
+                "Bạn có thể mua vé trực tiếp tại quầy vé & sau đó có thể chọn mua các combo đồ ăn, nước uống tại quầy phục vụ!"
+            ]
+        },
+        {
+            "tag": "check_seat",
+            "patterns": [
+                "cách kiểm tra tình trạng phòng chiếu trực tuyến trước khi đến rạp",
+                "cách kiểm tra số ghế và số suất chiếu trống trước khi đặt vé"
+            ],
+            "responses": [
+                "Bạn có thể kiểm tra tình trạng phòng chiếu, số ghế trống khi đặt vé trên website của rạp!"
+            ]
+        },
+        {
+            "tag": "fare",
+            "patterns": [
+                "cách mua vé với giá ưu đãi cho sinh viên, học sinh, người cao tuổi hoặc gia đình có con nhỏ",
+                "Giá vé cho người lớn, trẻ em và sinh viên",
+                "Rạp có giá vé ưu đãi cho học sinh, sinh viên hay người cao tuổi không",
+                "Rạp có chính sách giảm giá cho sinh viên hay người cao tuổi không",
+                "Có giá vé khác nhau cho các phòng chiếu khác nhau không",
+                "Có chính sách giá vé cho các buổi chiếu sớm, chiếu muộn không",
+                "Có giảm giá vé xem phim cho học sinh, sinh viên không"
+            ],
+            "responses": [
+                "Xin lỗi nhưng bạn có thể xem giá vé trong phần chi tiết phim!",
+                "Xin lỗi nhưng bạn có thể tham khảo giá vé trong phần chi tiết phim!"
+            ]
+        },
+        {
+            "tag": "choose_seat",
+            "patterns": [
+                "cách chọn được chỗ ngồi yêu thích và thoải mái nhất khi đến rạp",
+                "Rạp có những ghế ngồi nào để khách hàng lựa chọ",
+                "Tôi có thể chọn chỗ ngồi khi đặt vé trực tuyến không",
+                "Tôi có thể đặt ghế trước khi đến rạp không",
+                "có thể chọn chỗ ngồi của mình trước khi mua vé không"
+            ],
+            "responses": [
+                "Bạn có thể tiến hành đặt vé online để xem các ghế còn trống và chọn ghế phù hợp cho mình."
+            ]
+        },
+        {
+            "tag": "other_area",
+            "patterns": [
+                "các khu vực phục khác ở rạp chiếu phim",
+                "rạp có các khu vực phục khác phục vụ khách hàng không",
+                "Rạp có những dịch vụ giải trí khác ngoài chiếu phim không",
+                "Rạp có trang bị hệ thống giải trí khác như khu vui chơi, phòng game hay karaoke không",
+                "Rạp có những dịch vụ đặc biệt như ăn uống, mua sắm trong khuôn viên rạp không",
+                "Rạp chiếu phim có sử dụng các dịch vụ thêm như trò chơi điện tử, khu vui chơi cho trẻ em không",
+                "Rạp chiếu phim có các dịch vụ thêm như trò chơi điện tử, khu vui chơi cho trẻ em không",
+                "Rạp chiếu phim có các dịch vụ thêm không",
+                "Rạp chiếu phim có khu vực vui chơi trẻ em không",
+                "có khu vực vui chơi trẻ em không",
+                "Rạp chiếu phim có khu vui chơi trẻ em không",
+                "có khu vui chơi trẻ em không",
+                "Rạp chiếu phim có khu trò chơi điện tử không không",
+                "có khu trò chơi điện tử không không",
+                "Rạp chiếu phim có quầy bar không",
+                "Rạp chiếu phim có khu vực đợi trước khi vào xem phim không",
+                "Rạp chiếu phim có khu vực chờ trước khi phim bắt đầu không"
+            ],
+            "responses": [
+                "Tại rạp chúng tôi có các khu vực để phục vụ quý khách hàng như khu vui chơi dành cho trẻ em, khu vực trò chơi điện tử, booling, quầy bar, khu mua sắm,... bạn có thể chờ ở các khu vực này cho đến khi phim được chiếu hoặc có thể đến rạp chúng tôi để vui chơi giải trí!",
+                "Rạp chúng tôi có các khu vực khác như khu vui chơi dành cho trẻ em, khu vực trò chơi điện tử, booling, quầy bar, khu mua sắm,... bạn có thể trải nghiệp tại rạp của chúng tôi. Cảm ơn!"
+            ]
+        },
+        {
+            "tag": "age_limit",
+            "patterns": [
+                "rạp có quy định về độ tuổi để xem phim không",
+                "rạp có quy định về độ tuổi xem phim không",
+                "rạp có quy định độ tuổi xem phim không",
+                "Rạp có quy định về độ tuổi khi xem phim không",
+                "có quy định về độ tuổi khi xem phim không",
+                "Tôi có thể mua vé theo độ tuổi của mình không",
+                "Có những phim nào được phép xem cùng con nhỏ",
+                "phim nào được phép xem cùng con nhỏ",
+                "Có những phim nào bị hạn chế độ tuổi không được xem dưới 18 tuổi không",
+                "Phim này có độ tuổi giới hạn không",
+                "Rạp chiếu phim có quy định về tuổi cho phép xem phim không",
+                "Có quy định về tuổi cho phép vào xem phim không",
+                "Bạn có phim nào dành cho trẻ em không",
+                "có phim nào dành cho người lớn tuổi không?",
+                "Phim này có dành cho trẻ em không",
+                "Phim này có độ tuổi giới hạn không",
+                "Rạp chiếu phim có giới hạn độ tuổi để xem phim không",
+                "Rạp chiếu phim có giới hạn độ tuổi xem phim không",
+                "Rạp có giới hạn độ tuổi để xem phim không",
+                "Rạp có giới hạn độ tuổi xem phim không",
+                "có giới hạn độ tuổi để xem phim không"
+            ],
+            "responses": [
+                "Rạp chúng tôi có các quy định về độ tuổi khi xem phim:<br/>- C13: Cấm trẻ em dưới 13 tuổi.<br/>- C16: Cấm trẻ em dưới 16 tuổi.<br/>- C18: Cấm người dưới 18 tuổi.<br/>- P: Phim được phép phổ biến đến người xem ở mọi độ tuổi.<br/>Bạn vui lòng chọn phim thích hợp cho mình và cả con em (nếu có) để tránh gặp vấn đề khi nhân viên của chúng tôi kiểm tra vé. Xin cảm ơn!"
+            ]
+        },
+        {
+            "tag": "time_cofirm_ticket",
+            "patterns": [
+                "Tôi phải đến rạp trước bao lâu để có thể vào phòng chiếu",
+                "Tôi cần phải đến trước bao nhiêu giờ để lấy vé",
+                "Nếu tôi đến muộn, tôi có thể vào xem phim không",
+                "Phải đến trước bao lâu để lấy vé trước khi chiếu phim",
+                "Phải đến trước bao lâu để lấy vé trước giờ chiếu",
+                "Nếu tôi đến muộn, tôi có được phép vào xem phim không",
+                "Nếu tôi đến muộn, tôi có được vào xem phim không",
+                "Khi nào tôi nên đến rạp, trước giờ chiếu phim bao lâu",
+                "tôi nên đến rạp trước giờ chiếu phim bao lâu",
+                "Phải đến rạp trước bao lâu để lấy vé",
+                "Nếu tôi đến muộn thì có được vào phòng chiếu không",
+                "Khi nào tôi cần đến rạp trước để chuẩn bị cho suất chiếu",
+                "tôi cần đến rạp trước bao lâu để chuẩn bị cho suất chiếu",
+                "tôi cần đến rạp trước giờ chiếu phim bao lâu là được",
+                "tôi cần đến rạp trước giờ chiếu phim bao lâu",
+                "Có cần đến sớm trước khi phim chiếu không",
+                "Có cần phải đến sớm trước khi phim chiếu không",
+                "Tôi cần phải đến trước bao nhiêu phút để vào xem phim",
+                "Tôi có thể mua vé trước giờ chiếu phim bao lâu",
+                "Tôi cần phải đến trước bao lâu để vào xem phim"
+            ],
+            "responses": [
+                "Trước giờ xem phim, nếu bạn đã mua vé online thì vui lòng đến trước giờ chiếu từ 15-30p để tiến hành lấy vé, tuy nhiên nếu bạn đến trễ chúng tôi vẫn có thể hỗ trợ nhưng thời gian trễ không được quá 15p kể từ lúc phim được chiếu. Ngược lại nếu bạn đến và mua vé tạp rạp thì bạn cũng cần phải đến trước giờ chiếu ít nhập 15p để tiến hành mua vé, nếu bạn đến trễ mà chưa đặt vé online thì có thể phòng chiếu sẽ full và bạn không thể xem được phim mà mình muốn.",
+                "Bạn cần phải đến rạp trước 15p để tiến hành đổi vé nếu bạn đã thanh toán online. Nếu bạn chưa mua vé online thì bạn cần phải để sớm trước giờ chiếu để tiến hành mua vé, nếu bạn đến quá trễ thì có thể phim sẽ full chỗ và chúng tôi không thể hỗ trợ nhưng nếu bạn đã đặt vé online thì chúng tôi có thể hỗ trợ nếu bạn đến trễ, tuy nhiên tối đa là trễ 10p kể từ giờ chiếu phim.",
+                "Bạn cần phải đến rạp trước 15p để tiến hành đổi vé nếu bạn đã thanh toán online và chúng tôi có thể hỗ trợ nếu bạn đến trễ, tuy nhiên tối đa là trễ 10p kể từ giờ chiếu phim. Nếu bạn chưa mua vé online thì bạn cần phải để sớm trước giờ chiếu để tiến hành mua vé, nếu bạn đến quá trễ thì có thể phim sẽ full chỗ và chúng tôi không thể hỗ trợ."
+            ]
+        },
+        {
+            "tag": "seat_count",
+            "patterns": [
+                "Phòng chiếu có sức chứa tối đa là bao nhiêu người",
+                "Phòng chiếu có bao nhiêu ghế",
+                "Phòng chiếu có sức chứa bao nhiêu người",
+                "Phòng chiếu có sức chứa là bao nhiêu người",
+                "Sức chứa của phòng chiếu là bao nhiêu",
+                "Số lượng ghế ngồi trong phòng chiếu",
+                "Số lượng ghế ngồi trong phòng chiếu là bao nhiêu",
+                "có bao nhiêu ghế ngồi trong phòng chiếu",
+                "có bao nhiêu ghế ngồi trong phòng chiếu phim",
+                "có bao nhiêu ghế ngồi trong rạp chiếu phim",
+                "có bao nhiêu ghế ngồi trong rạp chiếu"
+            ],
+            "responses": [
+                "Tuỳ thuộc vào các phòng chiếu khác nhau mà sức chứa, số lượng chỗ ngồi sẽ khác nhau, bạn có thể chọn phim & giờ chiếu mình muốn để có thể xem số lượng ghế còn trống, ghế đã đặt của phòng chiếu."
+            ]
+        },
+        {
+            "tag": "miss_movie",
+            "patterns": [
+                "Phải làm gì nếu bị lỡ giờ xem phim",
+                "Điều gì xảy ra nếu tôi đến trễ phim",
+                "Phải làm gì nếu tôi đến trễ",
+                "nếu tôi đến trễ thì sao",
+                "nếu tôi đến trễ thì làm sao",
+                "nếu tôi đến trễ thì như thế nào",
+                "nếu tôi đến trễ thì làm thế nào",
+                "nếu tôi trễ giờ xem phim thì sao",
+                "nếu tôi trễ giờ xem phim thì làm sao",
+                "nếu tôi trễ giờ xem phim thì làm thế nào",
+                "nếu tôi trễ giờ xem phim thì như thế nào",
+                "nếu bị lỡ giờ xem phim thì sao",
+                "nếu bị lỡ giờ xem phim thì như thế nào",
+                "nếu bị lỡ giờ xem phim thì làm thế nào",
+                "nếu bị lỡ giờ xem phim thì làm sao"
+            ],
+            "responses": [
+                "Xin lỗi nhưng chúng tôi không thể hỗ trợ nếu bạn đến quá trễ so với giờ chiếu phim, vậy nên bạn vui lòng đến trước giờ chiếu phim ít nhất 15p để tiến hành mua vé (hoặc lấy vé nếu đã mua vé online). Xin cảm ơn!"
+            ]
+        },
+        {
+            "tag": "movie_type",
+            "patterns": [
+                "Có những loại phim nào đang chiếu tại rạp hiện tại",
+                "thể loại phim hài, tình cảm, hành động, kinh dị hay phim khoa học viễn tưởng",
+                "những loại phim nào đang chiếu tại rạp",
+                "những thể loại phim nào đang chiếu tại rạp",
+                "những thể loại nào đang chiếu tại rạp",
+                "có những thể loại nào đang chiếu tại rạp",
+                "có những loại phim nào đang chiếu tại rạp"
+            ],
+            "responses": [
+                "Rạp chúng tôi có nhiều thể loại phim khác nhau như: hài, hành động, khoa học viễn tưởng, trinh thám, tình cảm, hoạt hình,... Chúng tôi có đặt thể loại phim ngay bên dưới bộ phim & trong phần chi tiết phim nên bạn có thể tham khảo ngay tại website và chọn phim phù hợp."
+            ]
+        },
+        {
+            "tag": "find_seat",
+            "patterns": [
+                "Cách tìm ghế của mình trong phòng chiếu",
+                "Cách tìm chỗ ngồi của mình trong phòng chiếu",
+                "cách tìm ghế của mình",
+                "cách tìm chỗ ngồi của mình",
+                "tôi có thể tìm ghế ngồi của mình như thế nào",
+                "làm sao để tìm chỗ ngồi của mình",
+                "làm sao để tìm ghế của mình"
+            ],
+            "responses": [
+                "Trong phòng chiếu phim của chúng tôi có các hàng ghế theo thứ tự từ A->Z và các ghế trong hàng có đánh số thứ tự nên bạn có thể dễ hàng tìm thấy ghế của mình theo hàng và số ghế được in trên vé."
+            ]
+        },
+        {
+            "tag": "parking_lot",
+            "patterns": [
+                "Rạp có cung cấp chỗ để để xe không",
+                "Rạp có chỗ để đậu xe không",
+                "Rạp có cung cấp dịch vụ giữ xe không?",
+                "Rạp có cung cấp dịch vụ bảo vệ xe cho khách hàng không",
+                "Rạp có chỗ đậu xe miễn phí không",
+                "Có chỗ đỗ xe rộng rãi tại rạp không",
+                "Có chỗ để giữ xe tại rạp không",
+                "Có khu vực để đậu xe tại rạp không",
+                "Có chỗ đỗ xe ô tô tại rạp chiếu phim không",
+                "Có chỗ để xe đạp hoặc xe máy tại rạp chiếu phim không",
+                "Rạp chiếu phim có chỗ đậu xe không?",
+                "Có khu vực đậu xe miễn phí không",
+                "Có chỗ để để xe miễn phí tại rạp chiếu phim không",
+                "Rạp chiếu phim có chỗ đậu xe cho khách hàng không",
+                "Rạp có chỗ để giữ xe không",
+                "Rạp có khu vực đỗ xe miễn phí không",
+                "Có khu vực đậu xe riêng tại rạp không"
+            ],
+            "responses": [
+                "Vâng, rạp của chúng tôi có khu vực giữ xe dành cho cả xe máy, xe ô tô ở dưới tầng hầm nên quý khách có thể an tâm về xe của mình!"
+            ]
+        },
+        {
+            "tag": "get_ticket",
+            "patterns": [
+                "Nếu mua vé trực tuyến, tôi phải làm gì để nhận được vé của mình",
+                "Tôi có thể mua vé và nhận vé điện tử để vào phòng chiếu không cần phải lấy vé tại quầy thu ngân không",
+                "Vé phải được in ra hay có thể xem trên điện thoại",
+                "Phải đến quầy thanh toán những gì trước khi xem phim",
+                "Nếu tôi đặt vé trực tuyến thì có cần phải đến quầy nhận vé không"
+            ],
+            "responses": [
+                "Nếu đặt vé online, bạn cần đến rạp trước giờ chiếu từ 5-10p hoặc sớm hơn để tiến hành lấy vé của mình thông, bạn vui lòng xuất hoá đơn đặt vé/chi tiết vé đã đặt để nhân viên xác nhận và giao vé cho bạn!"
+            ]
+        },
+        {
+            "tag": "disabilities",
+            "patterns": [
+                "Rạp có hỗ trợ cho người khuyết tật",
+                "Rạp có hỗ trợ dịch vụ cho người khuyết tật không",
+                "Rạp chiếu phim có tạo điều kiện cho khán giả khuyết tật xem phim không",
+                "Có chỗ cho người khuyết tật trong phòng chiếu không?",
+                "Có chính sách hỗ trợ cho người khuyết tật không",
+                "Rạp có chính sách giảm giá cho người khuyết tật không"
+            ],
+            "responses": [
+                "Đối với người khuyết tật chúng tôi có các chính sách hỗ trợ khác nhau, bạn vui lòng đến rạp để biết chi tiết về các chính sách hỗ trợ!"
+            ]
+        },
+        {
+            "tag": "rating",
+            "patterns": [
+                "đánh giá và gửi phản hồi về trải nghiệm của mình với rạp chiếu phim",
+                "cách đánh giá và gửi phản hồi về trải nghiệm của mình với rạp chiếu phim",
+                "cách đưa ra ý kiến phản hồi về trải nghiệm của mình tại rạp",
+                "cách gửi ý kiến phản hồi về trải nghiệm của mình tại rạp",
+                "cách đưa ra ý kiến phản hồi về trải nghiệm của mình tại rạp chiếu"
+            ],
+            "responses": [
+                "Bạn có thể gửi đánh giá & ý kiến phản hồi tại phần Đánh giá của chúng tôi. Rất vui vì nhận được những sự góp ý từ bạn, chúng tôi sẽ cố gắng khắc phục, cải thiện để mang lại những trải nghiệm tốt nhất cho khách hàng. Xin cảm ơn!"
+            ]
+        },
+        {
+            "tag": "register_member",
+            "patterns": [
+                "đăng ký thành viên của rạp để nhận được các ưu đãi đặc biệt",
+                "cách đăng ký thành viên để nhận được các ưu đãi và quà tặng của rạp",
+                "Rạp chiếu phim có chương trình thẻ thành viên để tích lũy điểm hay không",
+                "Rạp có thẻ thành viên không",
+                "Làm thế nào để đăng ký thẻ thành viên của rạp chiếu phim này"
+            ],
+            "responses": [
+                "Bạn có thể đăng ký trở thành thành viên của rạp tại \"Quầy bán vé\" để có thể tích điểm và nhận được nhiều ưu đãi hơn trong tương lai!"
+            ]
+        },
+        {
+            "tag": "exchange_point",
+            "patterns": [
+                "đổi điểm thưởng thành vé xem phim không",
+                "cách sử dụng các phiếu quà tặng để mua vé xem phim",
+                "cách đổi điểm tích lũy để nhận được các ưu đãi và quà tặng của rạp",
+                "Tôi có thể sử dụng điểm tích lũy của thẻ thành viên để mua vé không",
+                "Tôi có thể sử dụng thẻ thành viên của rạp để được giảm giá vé không",
+                "Có chương trình đổi quà tặng cho khách hàng tại rạp không",
+                "Tôi có thể sử dụng thẻ thành viên để mua vé không",
+                "Tôi có thể sử dụng thẻ thành viên hoặc thẻ quà tặng của tôi để mua vé không",
+                "Tôi có thể sử dụng điểm tích lũy từ thẻ thành viên để mua vé không",
+                "Rạp có chương trình thẻ thành viên hoặc điểm thưởng",
+                "Thẻ thành viên của rạp chiếu phim này có được giảm giá không"
+            ],
+            "responses": [
+                "Đối với những bạn đã đăng ký trở thành thành viên của rạp, bạn có thể tham khảo các chương trình khuyến mãi, quà tặng tại rạp, nhân viên của chúng tôi sẽ giúp bạn biết thêm thông tin chi tiết.",
+                "Bạn có thể đăng ký trở thành thành viên của rạp tại \"Quầy bán vé\" để có thể tích điểm và nhận được nhiều ưu đãi hơn trong tương lai! Bạn có thể tham khảo các chương trình khuyến mãi, quà tặng tại rạp, nhân viên của chúng tôi sẽ giúp bạn biết thêm thông tin chi tiết."
+            ]
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        },
+        {
+            "tag": "",
+            "patterns": [],
+            "responses": []
+        }
+    ]
+}

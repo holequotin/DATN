@@ -1,0 +1,656 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.cinema-list {
+    background-color: #222;
+}
+
+.cinema-list h1 {
+    color: #717171;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #b9b9b9;
+}
+
+.cinema-list .location {
+    font-size: 14px;
+    cursor: pointer;
+    color: #dbdbdb;
+}
+
+.cinema-list .location:hover {
+    color: #e71a0f;
+}
+
+.cinema-list .siteactive {
+    color: #e71a0f !important;
+}
+
+.cinema-list .subsiteactive {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #e71a0f !important;
+}
+
+.cinema-list .cinema.item {
+    cursor: pointer;
+    color: #dbdbdb;
+    font-size: 12px;
+}
+
+body {
+    background-color: beige;
+}
+
+main {
+    min-height: 400px;
+}
+
+ol,
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    background-image: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-top.png);
+}
+
+.header-container {
+    margin: 0 25%;
+    display: flex;
+    align-items: center;
+}
+
+.header-container a .logo-page {
+    height: 70px;
+    width: auto;
+    margin-top: 10px;
+}
+
+.header-container .nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.header-container .nav-list .nav-list-item {
+    margin-right: 64px;
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.header-container .nav-list .nav-list-item a {
+    color: black;
+}
+
+.header-container .nav-list .movie-option {
+    background-image: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg_menu_hover.png);
+    padding: 8px;
+    position: absolute;
+    min-width: 190px;
+    border: 2px solid #828282;
+    display: none;
+}
+
+.header-container .nav-list .movie-option .movie-option-item a {
+    color: white;
+    font-size: 18px;
+}
+
+.header-container .nav-list .movie-option .movie-option-item a:hover {
+    color: red;
+}
+
+.main-container {
+    padding: 0 25%;
+}
+
+.main-container .main-top {
+    border-bottom: 5px solid #6e6e6e;
+    margin-bottom: 40px;
+    min-width: 600px;
+    margin-top: 30px;
+}
+
+.heading-page-first {
+    font-size: 40px;
+}
+
+.heading-page-second a {
+    color: #948e8e;
+}
+
+.main-container .main-top .heading-page-second {
+    float: right;
+    margin-top: -30px;
+}
+
+.main-container .main-content {
+    border-bottom: 5px solid #6e6e6e;
+    margin-bottom: 50px;
+}
+
+.main-container .main-content .movie-list {
+    display: flex;
+    margin-left: -30px;
+    flex-wrap: wrap;
+}
+
+.main-container .main-content .movie-list .movie-list-item {
+    width: 200px;
+    flex: 1 0 300px;
+    box-sizing: border-box;
+    margin: 1.5rem 0.5em;
+}
+
+@media screen and (min-width: 40em) {
+    .movie-list-item {
+        max-width: calc(50% - 1em);
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .movie-list-item {
+        max-width: calc(25% - 1em);
+    }
+}
+
+.main-container .main-content .movie-list .movie-list-item .movie-info {
+    min-height: 320px;
+}
+
+.main-container .main-content .movie-list .movie-list-item .movie-info p {
+    margin: 0px 0;
+}
+
+.main-container .main-content .movie-list .movie-list-item .movie-info .movie-image {
+    width: 200px;
+    height: auto;
+}
+
+.main-container .main-content .movie-list .movie-list-item .movie-info .movie-name {
+    font-weight: 900;
+    font-size: 16px;
+    text-transform: uppercase;
+    min-height: 60px;
+}
+
+.main-container .main-content .movie-list .movie-list-item .movie-action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-container .main-movie-detail {
+    display: flex;
+}
+
+.main-container .main-movie-detail img {
+    width: 250px;
+    height: auto;
+    margin-right: 30px;
+}
+
+.main-container .main-movie-detail .movie-content p {
+    margin: 1px 0;
+}
+
+.main-container .main-movie-detail .movie-content .movie-name {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.main-container .main-movie-detail .movie-content .rated {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.main-container .main-movie-detail .movie-content img {
+    height: 50px;
+    width: auto;
+    margin: 5px 0 10px;
+}
+
+.main-container .main-bot .action {
+    background-color: #e71a0f;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+}
+
+.main-container .main-bot .action button {
+    border: none;
+    background-color: #e71a0f;
+    color: white;
+    cursor: pointer;
+}
+
+.main-container .main-bot .action .detail {
+    font-weight: 900;
+}
+
+.main-container .main-bot .action-trailer {
+    display: none;
+    margin-bottom: 30px;
+    min-width: 100px;
+}
+
+.main-container .main-theater {
+    margin-top: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.main-container .main-theater .theater-name {
+    font-size: 32px;
+    color: #838080;
+    margin: 20px 0;
+}
+
+.main-container .main-theater .theater-info {
+    text-align: left;
+    background-color: rgba(124, 121, 121, 0.3);
+    position: absolute;
+    color: white;
+    width: 100%;
+    top: 77%;
+    padding-left: 10px;
+}
+
+.main-container .main-theater .cinema-image {
+    width: 100%;
+    max-height: 400px;
+}
+
+.main-container .theater-schedule .date-list {
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.main-container .theater-schedule .date-list .date {
+    cursor: pointer;
+    border: none;
+    margin: 20px 10px;
+    font-size: 24px;
+    background-color: beige;
+}
+
+.main-container .theater-schedule .date-list .select-date {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item {
+    padding-bottom: 20px;
+    border-bottom: 2px solid grey;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item a .movie-name {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: black;
+    margin-right: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item a .rated {
+    height: 30px;
+    width: auto;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item .movie-schedule {
+    display: flex;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item .movie-schedule a img {
+    width: 180px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item .movie-schedule .schedule p {
+    font-weight: 900;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item .movie-schedule .time {
+    display: flex;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item .movie-schedule .time a {
+    margin-right: 10px;
+}
+
+.main-container .theater-schedule .movie-list .movie-list-item .movie-schedule .time a:hover {
+    background-color: rgb(221, 41, 41);
+}
+
+.d2,
+.d3,
+.d4,
+.d5,
+.d6,
+.d7 {
+    display: none;
+}
+
+.main-container .page-title {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    border: 3px solid rgb(179, 175, 169);
+    margin-top: 40px;
+}
+
+.main-container .schedule-info {
+    background-color: rgb(253, 219, 175);
+    font-weight: 600;
+    padding: 5px;
+    font-size: 20px;
+    border: 3px solid rgb(179, 175, 169);
+}
+
+.main-container .sub-title {
+    font-weight: 900;
+    background-color: #b1aaaa;
+    padding: 5px;
+    text-align: center;
+    border: 3px solid rgb(87, 87, 83);
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.main-container .screen {
+    width: 100%;
+    height: auto;
+}
+
+.main-container .seat-row {
+    margin: 40px;
+}
+
+.main-container .seats {
+    display: flex;
+    justify-content: center;
+    margin-left: -60px;
+}
+
+.main-container .seats .seat {
+    border: 1px solid rgb(50, 184, 50);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.main-container .seats .seat-disable {
+    background-color: #b1aaaa;
+    border: 1px solid #b1aaaa;
+}
+
+.main-container .general-info {
+    margin-top: 30px;
+}
+
+.main-container .general-info .general-info-list .general-info-list-item .btn-pay {
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    background-color: #b13731;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+}
+
+.main-container .general-info .general-info-list .general-info-list-item .btn-pay:hover {
+    background-color: #f11207;
+}
+
+.main-container .general-info-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+}
+
+.main-container .general-info-list .general-info-list-item {
+    margin: 20px;
+}
+
+.main-container .general-info-list .general-info-list-item .schedule .info,
+.main-container .general-info-list .general-info-list-item .price {
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #222;
+    border: none;
+    color: rgb(211, 202, 202);
+}
+
+.main-container .general-info-list,
+.main-container .general-info-list .general-info-list-item .movie tr td,
+.main-container .general-info-list .general-info-list-item .schedule tr td {
+    color: rgb(211, 202, 202);
+}
+
+.main-container .general-info-list .general-info-list-item .movie .movie-image {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.main-container .general-info-list .general-info-list-item .movie .movie-info tr td {
+    max-width: 100px;
+}
+
+.main-container .general-info-list .general-info-list-item .movie .movie-info .movie-name {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.main-container .seat-type {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-container .seat-type .normal,
+.main-container .seat-type .choosen,
+.checked {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.main-container .seat-type .normal {
+    border: 1px solid rgb(50, 184, 50);
+}
+
+.main-container .seat-type .choosen {
+    background-color: #b1aaaa;
+    border: 1px solid #b1aaaa;
+}
+
+.checked {
+    background-color: #b61c1c;
+    border: 1px solid #b61c1c !important;
+}
+
+.btn {
+    background-color: #828282;
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.btn-buy {
+    background-color: #e71a0f;
+    margin-right: 10px;
+}
+
+.btn-like {
+    padding: 0px 10px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer-container {
+    border-bottom: 2px solid #222;
+    border-top: 2px solid #222;
+}
+
+.footer-container .about-me {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 25%;
+}
+
+.heading-page-third {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+.footer-container .about-me .about-me-item {
+    width: 200px;
+}
+
+.footer-container .about-me .about-me-item .about-company .about-company-item,
+.footer-container .about-me .about-me-item .term .term-item,
+.footer-container .about-me .about-me-item .support .support-item {
+    margin-left: -30px;
+}
+
+.footer-container .about-me .about-me-item .connect-company {
+    display: flex;
+}
+
+.footer-container .about-me .about-me-item a img {
+    height: 60px;
+    width: auto;
+}
+
+.footer-container .about-me .about-me-item .connect-company .connect-company-item .sociated img {
+    height: 40px;
+    width: auto;
+}
+
+.footer-contact {
+    margin: 20px 30%;
+}
+
+.footer-contact p {
+    margin: -1px 0;
+}
+
+.end-page {
+    background-image: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-bottom-footer.jpg);
+    height: 114px;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.cinema-list {
+    background-color: #222;
+}
+
+.cinema-list h1,
+.cinema-list .h1 {
+    color: #717171;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #b9b9b9;
+}
+
+.cinema-list .location {
+    font-size: 14px;
+    cursor: pointer;
+    color: #dbdbdb;
+}
+
+.cinema-list .location:hover {
+    color: #e71a0f;
+}
+
+.cinema-list .siteactive {
+    color: #e71a0f !important;
+}
+
+.cinema-list .subsiteactive {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #e71a0f !important;
+}
+
+.cinema-list .cinema.item {
+    cursor: pointer;
+    color: #dbdbdb;
+    font-size: 12px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 30px;
+}
+
+.search-form .search-option {
+    align-self: flex-start;
+}
+
+.search-form .search-value {
+    flex: 1;
+    margin: 0 12;
+}
+
+.search-form .btn-search {
+    align-self: flex-end;
+    padding: 0;
+    background-color: #f5f5f5;
+    height: 38px;
+    width: 44px;
+}
+
+.search-form .btn-search:hover {
+    background-color: #83aade;
+}

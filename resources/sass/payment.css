@@ -1,0 +1,70 @@
+.main-container .cinema-order{
+    text-align: center;
+    border-bottom: 2px solid grey;
+    margin-top: 50px;
+}
+.main-container .cinema-order .cinema-name{
+    padding: 20px;
+    background-color: #726e6e;
+    color: white;
+}
+.main-container .movie-order{
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid grey;
+}
+.main-container .movie-order .movie-img{
+    height: 200px;
+    width: auto;
+    margin-right: 10px;
+}
+.main-container .movie-order{
+    margin: 0 15%;
+    padding: 20px;
+}
+.main-container .movie-order .movie-info-order{
+    text-align: center;
+}
+.main-container .movie-order .movie-info-order .movie-name{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 24px;
+}
+.main-container .time-order{
+    margin: 0 15%;
+    border-bottom: 2px solid grey;
+}
+.main-container .time-order {
+    display: flex;
+    justify-content: space-between;
+}
+.main-container .time-order li{
+    font-size: 24px;
+}
+.main-container .time-order .label{
+    font-weight: 600;
+    font-size: 30px;
+}
+.main-container .payment{
+    border-bottom: 2px solid grey;
+}
+.main-container .total{
+    text-align: right;
+    margin-right: 200px;
+    font-size: 24px;
+}
+.main-container .payment .btn-buy{
+    border: none !important;
+    padding: 10px !important;    
+    background-color: #d33d35 !important;
+    border-radius: 8px;
+    margin-left: 70%;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.main-container .payment .btn-buy:hover{
+    background-color: #f11207 !important;
+    color: white;
+}

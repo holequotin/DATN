@@ -1,0 +1,59 @@
+.chatbot {
+    position: fixed;
+    top: 80vh;
+    right:10vh;
+}
+.button_chatbot{
+    padding: 5px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.image_chatbot {
+    object-fit: cover;
+}
+.image_chatbot:hover {
+    width: 55;
+    height: 55;
+}
+
+
+.button_chatbot .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 27%;
+    margin-left: -60px;
+}
+
+.button_chatbot .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.button_chatbot:hover .tooltiptext {
+    visibility: visible;
+}
+.box{
+    position: fixed;
+    bottom: 0vh;
+    right: 3vh;
+    background: #b5d3dd;
+    width:400px;
+    height:500px;
+    border-radius: 5px;
+}

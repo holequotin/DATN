@@ -1,0 +1,31 @@
+.order-container{
+    margin: 0 15%;
+    margin-top: 50px;
+}
+.order-container table{
+    width: 100%;
+}
+.order-container table,
+.order-container tr,
+.order-container th,
+.order-container td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.order-container .order-list .label{
+    font-size: 20px;
+    font-weight: 600;
+}
+.order-container .order-list .movie a{
+    display: flex;
+}
+.order-container .order-list .movie a .movie-img{
+    height: 100px;
+    width: auto;
+    margin-right: 10px;
+}
+.order-container .order-list .movie a .movie-name{
+    text-transform: uppercase;
+    font-weight: 300;
+}
