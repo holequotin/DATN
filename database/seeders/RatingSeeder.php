@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Image;
-use App\Models\Rating;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +18,7 @@ class RatingSeeder extends Seeder
         DB::table('ratings')->insert([
             'name' => "P",
             'detail' => "Thích hợp cho mọi độ tuổi",
-        ]);        
+        ]);
         Image::create([
             'imageable_id' => 1,
             'imageable_type' => 'App\Models\Rating',
