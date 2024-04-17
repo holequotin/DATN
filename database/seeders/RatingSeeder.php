@@ -55,4 +55,5 @@ class RatingSeeder extends Seeder
             'path' => 'image/rated/rated_C18.png',
         ]);
     }
+    //test again
 }
