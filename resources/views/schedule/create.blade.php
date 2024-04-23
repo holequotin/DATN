@@ -192,6 +192,7 @@
                 }
                 //Display other error
                 else {
+                    // console.log(this.response)
                     errors = JSON.parse(this.responseText);
                     console.log(errors);
                     for(let error in errors)
@@ -203,7 +204,7 @@
         }
         xhr.send(form)
     }
-    
+
     function displayError(name,content){
         console.log(name,content)
         var error = document.getElementById(name);

@@ -2,8 +2,10 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use App\Models\Movie;
 use App\Models\Schedule;
+use Carbon\Carbon;
+use Illuminate\Contracts\Validation\Rule;
 
 class CheckUniqueLocation implements Rule
 {
@@ -30,14 +32,26 @@ class CheckUniqueLocation implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (Schedule::where('cinema_id', $this->request->cinema_id)
+        $isConflict = false;
+        //get movie
+        $movie = Movie::findOrFail($this->request->movie_id);
+        //get schedule in day
+        $schedules = Schedule::where('cinema_id', $this->request->cinema_id)
             ->where('room_id', $this->request->room_id)
-            ->where('start_at', $this->request->start_at)
-            ->where('play_time', $this->request->play_time)->first()
-        ) {
-            return false;
-        };
-        return true;
+            ->where('start_at', $this->request->start_at)->get();
+        //check time in day
+        foreach ($schedules as $schedule) {
+            $scheduleMovie = Movie::find($schedule->movie_id);
+            $scheduleStartTime = Carbon::parse($schedule->play_time);
+            $scheduleEndTime = $scheduleStartTime->copy()->addMinutes($scheduleMovie->length);
+
+            $newScheduleStartTime = Carbon::parse($this->request->play_time);
+            $newScheduleEndTime = $newScheduleStartTime->copy()->addMinutes($movie->length);
+
+            $isConflict = $newScheduleStartTime->between($scheduleStartTime, $scheduleEndTime) || $newScheduleEndTime->between($scheduleStartTime, $scheduleEndTime) || ($newScheduleStartTime->lessThan($scheduleStartTime) && $newScheduleEndTime->greaterThan($scheduleEndTime));
+            if ($isConflict) break;
+        }
+        return !$isConflict;
     }
 
     /**
