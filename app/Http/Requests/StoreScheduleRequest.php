@@ -4,9 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\CheckAfterCurrent;
 use App\Rules\CheckUniqueLocation;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreScheduleRequest extends FormRequest
 {
@@ -32,11 +30,11 @@ class StoreScheduleRequest extends FormRequest
             'movie_id' => ['required'],
             'start_at' => ['required', 'after_or_equal:today'],
             'play_time' => ['required', new CheckAfterCurrent($this)],
-            'cinema_id' => ['required', new CheckUniqueLocation($this)],
+            'cinema_id' => ['required', new CheckUniqueLocation($this)]
         ];
     }
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
-    }
+//    protected function failedValidation(Validator $validator)
+//    {
+//        throw new HttpResponseException(response()->json($validator->errors(), 422));
+//    }
 }

@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\CinemaController;
+use App\Http\Controllers\Api\MovieController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ScheduleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ScheduleController;
-use App\Http\Controllers\Api\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('cinema', CinemaController::class);
 Route::get('cinema/{cinema}/{movie}', [CinemaController::class, 'showScheduleOfMovieInCinema']);
-Route::resource('schedule', ScheduleController::class);
+Route::resource('schedule', ScheduleController::class)->except('store');
 Route::resource('order', OrderController::class);
 Route::resource('movie', MovieController::class);

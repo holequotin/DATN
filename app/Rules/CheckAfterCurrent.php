@@ -28,7 +28,8 @@ class CheckAfterCurrent implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Carbon::parse($value)->greaterThan(Carbon::parse(Carbon::now()->toTimeString()));
+        $date = Carbon::parse($this->request->start_at);
+        return $date > Carbon::today() || ($date->isToday() && Carbon::parse($value)->greaterThan(Carbon::parse(Carbon::now()->toTimeString())));
     }
 
     /**
@@ -38,6 +39,6 @@ class CheckAfterCurrent implements Rule
      */
     public function message()
     {
-        return 'Time must be greater than the present.';
+        return 'Thời gian chiếu phải trễ hơn bây giờ.';
     }
 }

@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\CinemaController;
 use App\Http\Controllers\ElasticsearchController;
-use App\Http\Controllers\OrderController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\MovieController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ScheduleController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/schedule/{schedule}/edit', [ScheduleController::class, 'edit'])
         ->middleware('can:update,App\Models\Schedule')
         ->name('schedule.edit');
+
+    Route::post('/schedule/', [ScheduleController::class, 'store'])->name('schedule.store');
 
     Route::get('/movie/create', [MovieController::class, 'create'])
         ->middleware('can:create,App\Models\Movie')

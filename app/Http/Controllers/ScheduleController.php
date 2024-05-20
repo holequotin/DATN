@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreScheduleRequest;
 use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Schedule;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
@@ -15,7 +18,7 @@ class ScheduleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,7 +28,7 @@ class ScheduleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -44,19 +47,35 @@ class ScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreScheduleRequest $request)
     {
-        //
+        $data = $request->only(['cinema_id', 'room_id', 'movie_id', 'start_at', 'play_time']);
+        // pass the validate
+        try {
+            Schedule::insert([
+                'cinema_id' => $data['cinema_id'],
+                'room_id' => $data['room_id'],
+                'movie_id' => $data['movie_id'],
+                'start_at' => $data['start_at'],
+                'play_time' => $data['play_time'],
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
+            ]);
+            //if insert success
+            return redirect()->back()->with('alert', ['type' => 'success', 'message' => 'Đăng kí lịch thành công']);
+        } catch (Exception $e) {
+            dd($e);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return Response
      */
     public function show(Schedule $schedule)
     {
@@ -66,8 +85,8 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return Response
      */
     public function edit(Schedule $schedule)
     {
@@ -78,9 +97,9 @@ class ScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Schedule $schedule
+     * @return Response
      */
     public function update(Request $request, Schedule $schedule)
     {
@@ -90,8 +109,8 @@ class ScheduleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return Response
      */
     public function destroy(Schedule $schedule)
     {
