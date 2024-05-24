@@ -174,7 +174,7 @@
                 first_date = new Date();
                 //set play time
                 today.setHours(today.getHours() + 1)
-                var current = today.getHours() + ":" + today.getMinutes();
+                var current = today.getTime()
                 play_time.setAttribute('value', current);
             }
             start_date.setAttribute('min', first_date.toISOString().split("T")[0]);
