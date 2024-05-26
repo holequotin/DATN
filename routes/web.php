@@ -5,6 +5,7 @@ use App\Http\Controllers\ElasticsearchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cinema/order', [OrderController::class, 'cinemaIndex'])
         ->middleware('can:view-cinema-order')
         ->name('order.cinema');
+
+    Route::post('/vnpay', [PaymentController::class, 'create'])->name('vnpay.create');
 });
 
 Route::get('/search', [ElasticsearchController::class, 'search'])->name('search');

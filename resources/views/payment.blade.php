@@ -21,7 +21,7 @@
                 <p class="play-time">{{$schedule->play_time}}</p>
             </li>
         </ul>
-        <ul class="time-order">            
+        <ul class="time-order">
             <li class="">
                 <p class="label">Seats:</p>
                 <p class="choosen-seats">{{$seats}}</p>
@@ -34,6 +34,10 @@
         <section class="payment">
             <p class="total"><b>Tổng: </b>{{$price}}</p>
             <button class="btn-buy" onclick="payment()">Đặt vé</button>
+            <form method="post" action="{{route('vnpay.create')}}">
+                @csrf
+                <button class="btn-buy" name="redirect" type="submit">Thanh toan VNPay</button>
+            </form>
         </section>
     </div>
 @endsection
