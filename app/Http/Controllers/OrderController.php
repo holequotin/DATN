@@ -7,38 +7,36 @@ use App\Models\Movie;
 use App\Models\Order;
 use App\Models\Room;
 use App\Models\Schedule;
-use App\Models\Seat;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-
-use function PHPUnit\Framework\countOf;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(User $user)
     {
         $user->load('orders.scheduleSeat.seat');
-        for ($i=0; $i < count($user->orders); $i++) { 
+        for ($i = 0; $i < count($user->orders); $i++) {
             $user->orders[$i]->cinema = Cinema::find($user->orders[$i]->cinema_id);
             $user->orders[$i]->movie = Movie::find($user->orders[$i]->movie_id)->load('images');
             $user->orders[$i]->room = Room::find($user->orders[$i]->room_id);
         }
-        
+
         $orders = $user->orders;
-        
-        for ($i=0; $i < $orders->count(); $i++) { 
+
+        for ($i = 0; $i < $orders->count(); $i++) {
             $seats = "";
-            for ($j=0; $j < $orders[$i]->scheduleSeat->count(); $j++) { 
+            for ($j = 0; $j < $orders[$i]->scheduleSeat->count(); $j++) {
                 $seats .= $orders[$i]->scheduleSeat[$j]->seat->name.' ';
             }
             $orders[$i]->seats = $seats;
-        }   
+        }
 
         return view('order.order-list',compact('orders'));
         // dd($orders->toArray());
@@ -48,7 +46,7 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -57,9 +55,9 @@ class OrderController extends Controller
 
     /**
      * Choose seat for selected-movie
-     * 
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     *
+     * @param Schedule $schedule
+     * @return Response
      */
     public function chooseSeat(Schedule $schedule){
         $available_seat = 0;
@@ -72,7 +70,7 @@ class OrderController extends Controller
         $schedule->cinema = Cinema::find($schedule->cinema_id)->load('prices');
         $schedule->movie = Movie::find($schedule->movie_id)->load('images','rating');
         $schedule->room = Room::find($schedule->room_id);
-        for ($i=0; $i < count($schedule->seats); $i++) { 
+        for ($i = 0; $i < count($schedule->seats); $i++) {
             if ($schedule->seats[$i]->pivot->status == 0){
                 $available_seat++;
             }
@@ -89,19 +87,20 @@ class OrderController extends Controller
 
     /**
      * Display order-detail
-     * @param \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return Response
      */
-    public function payment(Schedule $schedule,Request $request){
+    public function payment(Schedule $schedule, Request $request)
+    {
         $schedule->load('cinema','movie.images','room');
         $seats = "";
-        for ($i=0; $i < count($request->seat); $i++) { 
+        for ($i = 0; $i < count($request->seat); $i++) {
             if ($request->seat[$i] != ""){
                 $seats .= $request->seat[$i]." ";
             }
         }
         $seats_id = "";
-        for ($i=0; $i < count($request->seats_id); $i++) { 
+        for ($i = 0; $i < count($request->seats_id); $i++) {
             if ($request->seats_id[$i] != ""){
                 $seats_id .= $request->seats_id[$i]." ";
             }
@@ -112,8 +111,8 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -123,8 +122,8 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function show(Order $order)
     {
@@ -134,8 +133,8 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function edit(Order $order)
     {
@@ -145,9 +144,9 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Order $order
+     * @return Response
      */
     public function update(Request $request, Order $order)
     {
@@ -157,18 +156,18 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function destroy(Order $order)
     {
         //
     }
-    
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function cinemaIndex()
     {

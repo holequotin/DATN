@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:create,App\Models\Order')
         ->name('order.create');
 
-    Route::post('/payment/{schedule}', [OrderController::class, 'payment'])
+    Route::get('/payment/{schedule}', [OrderController::class, 'payment'])
         ->middleware('can:create,App\Models\Order')
         ->name('payment');
 
@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('order.cinema');
 
     Route::post('/vnpay', [PaymentController::class, 'create'])->name('vnpay.create');
+    Route::get('/vnpay/callback', [PaymentController::class, 'callback'])->name('vnpay.callback');
 });
 
 Route::get('/search', [ElasticsearchController::class, 'search'])->name('search');

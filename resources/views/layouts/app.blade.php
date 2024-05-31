@@ -33,7 +33,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -113,7 +112,7 @@
 </header>
 <main>
     <form method="GET" action="{{ route('search') }}"
-          class="main-container search-form container-fluid d-flex justify-content-center">
+          class="main-container search-form container-fluid d-flex justify-content-center w-100">
         @csrf
         <!-- <div class="search-option">
                 <select class="form-select" name="search_type">
@@ -123,10 +122,34 @@
                     <option value="rating" {{ request()->get('search_type') === 'address' ? 'selected' : '' }}>Độ tuổi</option>
                 </select>
             </div> -->
-        @if(session()->has('alert'))
-            <x-alert :message="session('alert')['message']" :type="session('alert')['type']"></x-alert>
-        @endif
     </form>
+
+    <div class="container-fluid d-flex">
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+            <div id="liveToast"
+                 class="toast align-items-center text-bg-{{session()->has('alert') ? session('alert')['type'] : 'primary'}} border-0"
+                 role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        {{session()->has('alert') ? session('alert')['message'] : 'Some thing when wrong'}}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        @if(session()->has('alert'))
+            <script>
+                var myToastEl = document.getElementById('liveToast');
+                var myToast = new bootstrap.Toast(myToastEl, {
+                    autohide: true,
+                    delay: 5000 // 5000 milliseconds = 5 seconds
+                });
+                myToast.show();
+            </script>
+            {{--            <x-alert :message="session('alert')['message']" :type="session('alert')['type']"></x-alert>--}}
+        @endif
+    </div>
     <div class="chatbot">
         <button class="button_chatbot" aria-placeholder="click me!">
             <img class="image_chatbot" src="{{asset('storage/image/helping-icon-png-3.jpeg')}}" alt="" width="50"

@@ -35,6 +35,10 @@
             <p class="total"><b>Tổng: </b>{{$price}}</p>
             <button class="btn-buy" onclick="payment()">Đặt vé</button>
             <form method="post" action="{{route('vnpay.create')}}">
+                <input name="price" id="price" hidden value="{{$price}}">
+                <input name="schedule_id" id="schedule_id" hidden value="{{$schedule?->id}}">
+                <input name="seats" id="seats" hidden value="{{$seats}}">
+                <input name="seats_id" id="seats_id" hidden value="{{$seats_id}}">
                 @csrf
                 <button class="btn-buy" name="redirect" type="submit">Thanh toan VNPay</button>
             </form>

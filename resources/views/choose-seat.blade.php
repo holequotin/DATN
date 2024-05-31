@@ -4,14 +4,14 @@
     <div class="main-container">
         <h1 class="page-title">BOOKING ONLINE</h1>
         <div class="schedule-info">
-            <p class="cinema">{{$schedule->cinema->name}} 
-                | Room: {{$schedule->room->name}} 
+            <p class="cinema">{{$schedule->cinema->name}}
+                | Room: {{$schedule->room->name}}
                 | Số ghế ({{$schedule->available_seat}}/{{count($schedule->seats)}})</p>
             <p class="time">{{$schedule->play_time}}, {{$schedule->start_at}} ({{$schedule->movie->length}} phút)</p>
         </div>
         <h2 class="sub-title">Người / Ghế</h2>
         <img src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-screen.png" alt="" class="screen">
-        <form action="{{route('payment',[$schedule->id])}}" method="POST">
+        <form action="{{route('payment',[$schedule->id])}}" method="GET">
             @csrf
         <ul class="seat-row">
             @for ($i = 0; $i < count($schedule->row_seat); $i++)
@@ -19,7 +19,7 @@
                     <ul class="seats">
                         @for ($j = 0; $j < count($schedule->seats); $j++)
                             @if ($schedule->row_seat[$i]==substr($schedule->seats[$j]->name,0,1))
-                                
+
                                 @if ($schedule->seats[$j]->pivot->status == 0)
                                     <li>
                                         <input type="text" id="{{$schedule->seats[$j]->name}}" name="seat[]" class="seat" readonly placeholder="{{$schedule->seats[$j]->name}}" onclick="chooseSeat('{{$schedule->seats[$j]->name}}','{{$schedule->seats[$j]->id}}')">
@@ -87,7 +87,7 @@
 <script>
     function chooseSeat(seatName,seat_id){
         //choose seat in UI
-        if (document.getElementById(seatName).className.length > 4){            
+        if (document.getElementById(seatName).className.length > 4) {
             document.getElementById(seatName).className = 'seat'
             document.getElementsByClassName('seat_id'+seatName)[0].value = "";
         }
@@ -96,7 +96,7 @@
         }
 
         if (document.getElementById(seatName).value != ""){
-            document.getElementById(seatName).value = "";            
+            document.getElementById(seatName).value = "";
         }
         else {
             document.getElementById(seatName).value = seatName;
