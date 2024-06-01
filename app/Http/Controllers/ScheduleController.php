@@ -41,7 +41,26 @@ class ScheduleController extends Controller
         }
         else return redirect(route('home'));
         $cinemas->load('rooms');
-        return view('schedule.create', compact('movies','cinemas'));
+
+        //load calendar
+        $calendars = [];
+        foreach ($cinemas as $cinema) {
+            foreach ($cinema->rooms as $room) {
+                $calendars[$room->id] = [];
+                $schedules = Schedule::where('room_id', $room->id)->get();
+                foreach ($schedules as $schedule) {
+                    $title = $schedule->id;
+                    $start = Carbon::parse($schedule->start_at . ' ' . $schedule->play_time);
+                    $end = $start->clone()->addMinutes(100);
+                    $calendars[$room->id][] = [
+                        'title' => $title,
+                        'start' => (string)$start,
+                        'end' => (string)$end,
+                    ];
+                }
+            }
+        }
+        return view('schedule.create', compact('movies', 'cinemas', 'calendars'));
     }
 
     /**

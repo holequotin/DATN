@@ -2,6 +2,23 @@
 
 @section('content')
     <div class="container">
+        <div class="container bg-light h-25">
+            <div id="calendar"></div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+                var rooms = document.getElementById("room");
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    themeSystem: 'bootstrap5',
+                    initialView: 'timeGridWeek',
+                    slotMinTime: '8:00:00',
+                    slotMaxTime: '23:00:00',
+                    events: @json($calendars)[rooms.value] ?? ''
+                });
+                calendar.render();
+            });
+        </script>
         <form enctype="multipart/form-data" action="{{route('schedule.store')}}" id="add-schedule" method="post">
             @csrf
             <!-- Cinema Info -->
@@ -17,7 +34,7 @@
                 @endif
                 @if(Auth::user()->role_id==App\Models\User::ROLE_ADMIN)
                     <div class="col-md-6">
-                        <select class="form-control" name="cinema_id" onchange="changeRoom(options[selectedIndex].id)"
+                        <select class="form-control" name="cinema_id" onchange="changeRoom(this)"
                                 required>
                             @foreach ($cinemas as $cinema)
                                 <option id="{{ $loop->index }}" value="{{$cinema->id}}">
@@ -46,7 +63,8 @@
                         </select>
                     @endif
                     @if(Auth::user()->role_id==App\Models\User::ROLE_ADMIN)
-                        <select class="form-control" id="room" name="room_id" required>
+                            <select class="form-control" id="room" name="room_id" required
+                                    onchange="changeCalendar(this)">
                             @foreach ($cinemas[0]->rooms as $room)
                                 <option value="{{$room->id}}">
                                     {{$room->name}}
@@ -120,17 +138,33 @@
     <!-- Admin Script -->
     @if(Auth::user()->role_id==App\Models\User::ROLE_ADMIN)
         <script>
-            function changeRoom(id) {
+            function changeRoom(element) {
+                let id = parseInt(element.value)
                 var rooms = document.getElementById("room");
                 rooms.innerHTML = "";
                 var cinema_data = <?php echo $cinemas ?>;
-                var room_data = cinema_data[id].rooms;
+                var cinema = cinema_data.find(item => item.id === id)
+                var room_data = cinema.rooms;
                 for (room of room_data) {
                     var option = document.createElement("option");
                     option.setAttribute('value', room.id);
                     option.innerHTML = room.name;
                     rooms.appendChild(option);
                 }
+                changeCalendar(rooms)
+            }
+
+            function changeCalendar(element) {
+                console.log(element.value)
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    themeSystem: 'bootstrap5',
+                    initialView: 'timeGridWeek',
+                    slotMinTime: '8:00:00',
+                    slotMaxTime: '23:00:00',
+                    events: @json($calendars)[element.value] ?? ''
+                });
+                calendar.render();
             }
         </script>
     @endif

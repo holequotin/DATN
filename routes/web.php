@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CinemaController;
 use App\Http\Controllers\ElasticsearchController;
 use App\Http\Controllers\HomeController;

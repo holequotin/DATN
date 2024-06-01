@@ -4,12 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Schedule extends Model
 {
     use HasFactory,SoftDeletes;
     const LONGEST_PERIOD = 5;
+
+    protected $with = ['movie'];
+
     protected $fillable = [
         'cinema_id',
         'room_id',
@@ -23,7 +27,7 @@ class Schedule extends Model
     /**
      * The seats that belong to the Schedule
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function seats()
     {
@@ -41,6 +45,6 @@ class Schedule extends Model
     {
         return $this->belongsTo(Room::class);
     }
-    
+
     protected $date = ['delete_at'];
 }
