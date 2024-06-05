@@ -28,8 +28,8 @@ class CheckAfterCurrent implements Rule
      */
     public function passes($attribute, $value)
     {
-        $date = Carbon::parse($this->request->start_at);
-        return $date > Carbon::today() || ($date->isToday() && Carbon::parse($value)->greaterThan(Carbon::parse(Carbon::now()->toTimeString())));
+        $dateTime = Carbon::parse($this->request->start_at . ' ' . $value);
+        return $dateTime->greaterThan(Carbon::now());
     }
 
     /**

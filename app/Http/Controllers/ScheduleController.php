@@ -35,13 +35,14 @@ class ScheduleController extends Controller
         $movies = Movie::where('release_at','>=',Carbon::now()->subDays(Schedule::LONGEST_PERIOD))->get();
         if(Auth::user()->role_id==User::ROLE_MANAGER){
             $cinemas = Cinema::find(Auth::user()->cinema_id);
+            $cinemas->load('rooms');
+            $cinemas = [$cinemas];
         }
         else if(Auth::user()->role_id==User::ROLE_ADMIN){
             $cinemas = Cinema::get();
+            $cinemas->load('rooms');
         }
         else return redirect(route('home'));
-        $cinemas->load('rooms');
-
         //load calendar
         $calendars = [];
         foreach ($cinemas as $cinema) {
@@ -49,9 +50,9 @@ class ScheduleController extends Controller
                 $calendars[$room->id] = [];
                 $schedules = Schedule::where('room_id', $room->id)->get();
                 foreach ($schedules as $schedule) {
-                    $title = $schedule->id;
+                    $title = $schedule->movie->name;
                     $start = Carbon::parse($schedule->start_at . ' ' . $schedule->play_time);
-                    $end = $start->clone()->addMinutes(100);
+                    $end = $start->clone()->addMinutes($schedule->movie->length);
                     $calendars[$room->id][] = [
                         'title' => $title,
                         'start' => (string)$start,
