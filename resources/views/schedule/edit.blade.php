@@ -2,73 +2,111 @@
 
 @section('content')
 <div class="container">
-    <form enctype="multipart/form-data" action="" id="edit-schedule">
-        @csrf
-        <input type="hidden" id="method" name="_method" value="PUT">
-        <!-- Cinema Info -->
-        <div class="row mb-3">
-            <label for="cinema" class="col-md-4 col-form-label text-md-end">{{ __('Rạp:') }}</label>
-            <div class="col-md-6">
-                <input type="hidden" name="cinema_id" id="cinema_id" readonly value="{{ $schedule->cinema->id }}" required />
-                <input id="{{$schedule->cinema->id}}" type="text" readonly class="form-control" name="cinema" value="{{ $schedule->cinema->name }}">
+    <div class="row">
+        <div class="row gx-5 d-flex justify-content-center">
+            <div class="col bg-light d-flex">
+                <div id="calendar" class="w-100"></div>
             </div>
-        </div>
-        <!-- Room Info -->
-        <div class="row mb-3">
-            <label for="room_id" class="col-md-4 col-form-label text-md-end">{{ __('Phòng chiếu:') }}</label>
-            <div class="col-md-6">
-                <input type="hidden" name="room_id" id="room_id" readonly value="{{ $schedule->room->id }}" required />
-                <input id="{{$schedule->room->id}}" type="text" readonly class="form-control" name="room" value="{{ $schedule->room->name }}">
-            </div>
-        </div>
-        <!-- Movie Info -->
-        <div class="row mb-3">
-            <label for="release_date" class="col-md-4 col-form-label text-md-end">{{ __('Ngày phát hành:') }}</label>
-            <div class="col-md-6">
-                <input id="release_date" type="text" readonly class="form-control" value="{{ $schedule->movie->release_at }}">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="movie" class="col-md-4 col-form-label text-md-end">{{ __('Phim:') }}</label>
-            <div class="col-md-6">
-                <input type="hidden" name="movie_id" readonly id="movie_id" value="{{ $schedule->movie->id }}" required />
-                <input id="release_date" type="text" readonly class="form-control" value="{{ $schedule->movie->name }}">
-            </div>
-        </div>
-        <!-- Start date Info -->
-        <div class="row mb-3">
-            <label for="start_at" class="col-md-4 col-form-label text-md-end">{{ __('Ngày chiếu') }}</label>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        themeSystem: 'bootstrap5',
+                        initialView: 'timeGridWeek',
+                        slotMinTime: '00:00:00',
+                        slotMaxTime: '24:00:00',
+                        headerToolbar: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                        },
+                        events: @json($calendars)
+                    });
+                    calendar.render();
+                });
+            </script>
 
-            <div class="col-md-6">
-                <input id="start_at" required type="date" class="form-control" name="start_at" required>
-            </div>
-        </div>
-        <!-- Play time info -->
-        <div class="row mb-3">
-            <label for="play_time" class="col-md-4 col-form-label text-md-end">{{ __('Thời gian chiếu:') }}</label>
+            <div class="col">
+                <form enctype="multipart/form-data" action="" id="edit-schedule">
+                    @csrf
+                    <input type="hidden" id="method" name="_method" value="PUT">
+                    <!-- Cinema Info -->
+                    <div class="row mb-3">
+                        <label for="cinema" class="col-md-4 col-form-label text-md-end">{{ __('Rạp:') }}</label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="cinema_id" id="cinema_id" readonly
+                                   value="{{ $schedule->cinema->id }}" required/>
+                            <input id="{{$schedule->cinema->id}}" type="text" readonly class="form-control"
+                                   name="cinema" value="{{ $schedule->cinema->name }}">
+                        </div>
+                    </div>
+                    <!-- Room Info -->
+                    <div class="row mb-3">
+                        <label for="room_id"
+                               class="col-md-4 col-form-label text-md-end">{{ __('Phòng chiếu:') }}</label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="room_id" id="room_id" readonly value="{{ $schedule->room->id }}"
+                                   required/>
+                            <input id="{{$schedule->room->id}}" type="text" readonly class="form-control" name="room"
+                                   value="{{ $schedule->room->name }}">
+                        </div>
+                    </div>
+                    <!-- Movie Info -->
+                    <div class="row mb-3">
+                        <label for="release_date"
+                               class="col-md-4 col-form-label text-md-end">{{ __('Ngày phát hành:') }}</label>
+                        <div class="col-md-6">
+                            <input id="release_date" type="text" readonly class="form-control"
+                                   value="{{ $schedule->movie->release_at }}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="movie" class="col-md-4 col-form-label text-md-end">{{ __('Phim:') }}</label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="movie_id" readonly id="movie_id"
+                                   value="{{ $schedule->movie->id }}" required/>
+                            <input id="release_date" type="text" readonly class="form-control"
+                                   value="{{ $schedule->movie->name }}">
+                        </div>
+                    </div>
+                    <!-- Start date Info -->
+                    <div class="row mb-3">
+                        <label for="start_at" class="col-md-4 col-form-label text-md-end">{{ __('Ngày chiếu') }}</label>
 
-            <div class="col-md-6">
-                <input id="play_time" type="time" class="form-control" name="play_time" required>
+                        <div class="col-md-6">
+                            <input id="start_at" type="date" class="form-control" name="start_at" required>
+                        </div>
+                    </div>
+                    <!-- Play time info -->
+                    <div class="row mb-3">
+                        <label for="play_time"
+                               class="col-md-4 col-form-label text-md-end">{{ __('Thời gian chiếu:') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="play_time" type="time" class="form-control" name="play_time" required>
+                        </div>
+                    </div>
+                    <!-- error message -->
+                    <div class="row mb-3">
+                        <div class="col-md-6" id="error-list">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" id="submit-btn" class="btn btn-primary" onclick="edit()">
+                                {{ __('Sửa lịch') }}
+                            </button>
+                            <button type="button" id="cancle-btn" class="btn btn-danger" onclick="cancle()">
+                                {{ __('Hủy lịch') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <form id="delete-schedule">
+                    @csrf
+                    <input type="hidden" id="method" name="_method" value="DELETE">
+                </form>
             </div>
         </div>
-        <!-- error message -->
-        <div class="row mb-3">
-            <div class="col-md-6" id="error-list">
-            </div>
-            <div class="col-md-6">
-                <button type="button" id="submit-btn" class="btn btn-primary" onclick="edit()">
-                    {{ __('Sửa lịch') }}
-                </button>
-                <button type="button" id="cancle-btn" class="btn btn-danger" onclick="cancle()">
-                    {{ __('Hủy lịch') }}
-                </button>
-            </div>
-        </div>
-    </form>
-    <form id="delete-schedule">
-        @csrf
-        <input type="hidden" id="method" name="_method" value="DELETE">
-    </form>
+    </div>
 </div>
 <script>
     // initial
@@ -94,15 +132,16 @@
         var first_date = new Date(<?php echo json_encode($schedule->movie->release_at) ?>);
         var last_date = new Date(<?php echo json_encode($schedule->movie->release_at) ?>);
         last_date.setDate(last_date.getDate() + parseInt('{{App\Models\Schedule::LONGEST_PERIOD}}'))
-        start_date.valueAsDate = first_date;
-        play_time.setAttribute('value', "07:00");
+        var defaultValue = new Date(<?php echo json_encode($schedule->start_at) ?>);
+        start_date.valueAsDate = defaultValue;
+        play_time.setAttribute('value', <?php echo json_encode($schedule->play_time) ?>);
         //if release date in the pass
         if (first_date <= Date.now()) {
             first_date = new Date();
         }
 
         start_date.setAttribute('min', first_date.toISOString().split("T")[0]);
-        start_date.setAttribute('max', last_date.toISOString().split("T")[0]);
+        // start_date.setAttribute('max', last_date.toISOString().split("T")[0]);
 
     }
 
@@ -140,6 +179,7 @@
             //success
             if (xhr.status === 200) {
                 alert("Đã thay đổi lịch chiếu thành công!");
+
             }
             //if receive error
             else {

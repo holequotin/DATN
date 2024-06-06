@@ -110,8 +110,22 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
+        $scheduleRooms = Schedule::where('room_id', $schedule->room_id)->get();
+
+        $calendars = [];
+
+        foreach ($scheduleRooms as $scheduleRoom) {
+            $title = $scheduleRoom->movie->name;
+            $start = Carbon::parse($scheduleRoom->start_at . ' ' . $scheduleRoom->play_time);
+            $end = $start->clone()->addMinutes($scheduleRoom->movie->length);
+            $calendars[] = [
+                'title' => $title,
+                'start' => (string)$start,
+                'end' => (string)$end,
+            ];
+        }
         $schedule->load('movie','cinema','room');
-        return view('schedule.edit', compact('schedule'));
+        return view('schedule.edit', compact('schedule', 'calendars'));
     }
 
     /**
