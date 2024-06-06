@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreScheduleRequest;
+use App\Http\Requests\UpdateScheduleRequest;
 use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Schedule;
@@ -32,17 +33,15 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $movies = Movie::where('release_at','>=',Carbon::now()->subDays(Schedule::LONGEST_PERIOD))->get();
-        if(Auth::user()->role_id==User::ROLE_MANAGER){
+        $movies = Movie::where('release_at', '>=', Carbon::now()->subDays(Schedule::LONGEST_PERIOD))->get();
+        if (Auth::user()->role_id == User::ROLE_MANAGER) {
             $cinemas = Cinema::find(Auth::user()->cinema_id);
             $cinemas->load('rooms');
             $cinemas = [$cinemas];
-        }
-        else if(Auth::user()->role_id==User::ROLE_ADMIN){
+        } else if (Auth::user()->role_id == User::ROLE_ADMIN) {
             $cinemas = Cinema::get();
             $cinemas->load('rooms');
-        }
-        else return redirect(route('home'));
+        } else return redirect(route('home'));
         //load calendar
         $calendars = [];
         foreach ($cinemas as $cinema) {
@@ -118,13 +117,17 @@ class ScheduleController extends Controller
             $title = $scheduleRoom->movie->name;
             $start = Carbon::parse($scheduleRoom->start_at . ' ' . $scheduleRoom->play_time);
             $end = $start->clone()->addMinutes($scheduleRoom->movie->length);
-            $calendars[] = [
+            $event = [
                 'title' => $title,
                 'start' => (string)$start,
                 'end' => (string)$end,
             ];
+            if ($scheduleRoom->id == $schedule->id) {
+                $event['color'] = '#E4080A';
+            }
+            $calendars[] = $event;
         }
-        $schedule->load('movie','cinema','room');
+        $schedule->load('movie', 'cinema', 'room');
         return view('schedule.edit', compact('schedule', 'calendars'));
     }
 
@@ -135,9 +138,25 @@ class ScheduleController extends Controller
      * @param Schedule $schedule
      * @return Response
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(UpdateScheduleRequest $request, Schedule $schedule)
     {
-        //
+        try {
+            $data = $schedule->toArray();
+            if ($request->has('start_at')) {
+                $data['start_at'] = $request->start_at;
+            }
+            if ($request->has('play_time')) {
+                $data['play_time'] = $request->play_time;
+            }
+            $schedule->update([
+                'start_at' => $data['start_at'],
+                'play_time' => $data['play_time'],
+                "updated_at" => Carbon::now(),
+            ]);
+            return redirect(route('schedule.edit', ['schedule' => $schedule->id]))->with('alert', ['message' => 'Chỉnh sửa lịch thành công', 'type' => 'success']);
+        } catch (Exception $e) {
+            return redirect(route('schedule.edit', ['schedule' => $schedule->id]))->with('alert', ['message' => $e->getMessage(), 'type' => 'error']);
+        }
     }
 
     /**

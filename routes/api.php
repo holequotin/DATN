@@ -24,6 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('cinema', CinemaController::class);
 Route::get('cinema/{cinema}/{movie}', [CinemaController::class, 'showScheduleOfMovieInCinema']);
-Route::resource('schedule', ScheduleController::class)->except('store');
+Route::resource('schedule', ScheduleController::class)->except('store', 'update');
 Route::resource('order', OrderController::class);
 Route::resource('movie', MovieController::class);

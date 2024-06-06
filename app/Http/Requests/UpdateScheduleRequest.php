@@ -3,9 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\CheckUniqueUpdateLocation;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateScheduleRequest extends FormRequest
 {
@@ -33,12 +31,6 @@ class UpdateScheduleRequest extends FormRequest
             'start_at' => 'required',
             'play_time' => 'required',
             'cinema_id' => ['required', new CheckUniqueUpdateLocation($this,$schedule)],
-
         ];
-    }
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }

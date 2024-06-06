@@ -54,6 +54,10 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:update,App\Models\Schedule')
         ->name('schedule.edit');
 
+    Route::put('/schedule/{schedule}', [ScheduleController::class, 'update'])
+        ->middleware('can:update,App\Models\Schedule')
+        ->name('schedule.update');
+
     Route::post('/schedule/', [ScheduleController::class, 'store'])->name('schedule.store');
 
     Route::get('/movie/create', [MovieController::class, 'create'])

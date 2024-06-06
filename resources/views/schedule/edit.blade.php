@@ -27,8 +27,10 @@
             </script>
 
             <div class="col">
-                <form enctype="multipart/form-data" action="" id="edit-schedule">
+                <form enctype="multipart/form-data" action="{{route('schedule.update', ['schedule' => $schedule->id])}}"
+                      id="edit-schedule" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" id="method" name="_method" value="PUT">
                     <!-- Cinema Info -->
                     <div class="row mb-3">
@@ -85,13 +87,16 @@
                         <div class="col-md-6">
                             <input id="play_time" type="time" class="form-control" name="play_time" required>
                         </div>
+                        @error('cinema_id')
+                        <div class="error text-danger">{{$message}}</div>
+                        @enderror
                     </div>
                     <!-- error message -->
                     <div class="row mb-3">
                         <div class="col-md-6" id="error-list">
                         </div>
                         <div class="col-md-6">
-                            <button type="button" id="submit-btn" class="btn btn-primary" onclick="edit()">
+                            <button type="submit" id="submit-btn" class="btn btn-primary">
                                 {{ __('Sửa lịch') }}
                             </button>
                             <button type="button" id="cancle-btn" class="btn btn-danger" onclick="cancle()">
