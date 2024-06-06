@@ -3,20 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Movie;
-use App\Models\Image;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
-use App\Models\Category;
+use App\Models\Image;
+use App\Models\Movie;
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -26,22 +27,22 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return Response
      */
     public function store(StoreMovieRequest $request)
     {
         $data = $request->only(
             [
-                'release_date', 
-                'name', 
-                'director', 
-                'actor', 
+                'release_date',
+                'name',
+                'director',
+                'actor',
                 'language',
-                'length', 
-                'description', 
-                'rating_id', 
-                'categories', 
+                'length',
+                'description',
+                'rating_id',
+                'categories',
                 'trailer',
             ]);
         // pass the validate
@@ -56,8 +57,8 @@ class MovieController extends Controller
                 'description' => $data['description'],
                 'rating_id' => $data['rating_id'],
                 'trailer' => $data['trailer'],
-                "created_at" =>  \Carbon\Carbon::now(),
-                "updated_at" => \Carbon\Carbon::now(),
+                "created_at" =>  Carbon::now(),
+                "updated_at" => Carbon::now(),
             ]);
             foreach($data['categories'] as $category){
                 $movie->categories()->attach([$category]);
@@ -70,14 +71,14 @@ class MovieController extends Controller
                 'imageable_id'=> $movie->id,
                 'imageable_type' => 'App\Models\Movie',
                 'path' => $path,
-                "created_at" =>  \Carbon\Carbon::now(),
-                "updated_at" => \Carbon\Carbon::now(),
+                "created_at" =>  Carbon::now(),
+                "updated_at" => Carbon::now(),
             ])){
                 return ['message','success'];
             }
             //if insert success
             return response()->json(['message', 'Something went wrong'], 422);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 424);
         }
     }
@@ -85,8 +86,8 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param Movie $movie
+     * @return Response
      */
     public function show(Movie $movie)
     {
@@ -96,9 +97,9 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param Movie $movie
+     * @return Response
      */
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
@@ -148,13 +149,13 @@ class MovieController extends Controller
                     'imageable_id'=> $movie->id,
                     'imageable_type' => 'App\Models\Movie',
                     'path' => $path,
-                    "created_at" =>  \Carbon\Carbon::now(),
-                    "updated_at" => \Carbon\Carbon::now(),
+                    "created_at" =>  Carbon::now(),
+                    "updated_at" => Carbon::now(),
                 ]);
             }
             //if insert success
             return response()->json(['message','success'], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 424);
         }
     }
@@ -162,11 +163,12 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param Movie $movie
+     * @return Response
      */
     public function destroy(Movie $movie)
     {
+        $movie->schedules()->delete();
         return $movie->delete();
     }
 }

@@ -24,7 +24,7 @@ class OrderController extends Controller
         $user->load('orders.scheduleSeat.seat');
         for ($i = 0; $i < count($user->orders); $i++) {
             $user->orders[$i]->cinema = Cinema::find($user->orders[$i]->cinema_id);
-            $user->orders[$i]->movie = Movie::find($user->orders[$i]->movie_id)->load('images');
+            $user->orders[$i]->movie = Movie::withTrashed()->find($user->orders[$i]->movie_id)->load('images');
             $user->orders[$i]->room = Room::find($user->orders[$i]->room_id);
         }
 
